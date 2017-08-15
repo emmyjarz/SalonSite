@@ -1,0 +1,29 @@
+{
+  "name": "salonsite",
+  "version": "1.0.0",
+  "description": "Website for a salon with appointment booking, product management, and staff management",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shermangore/SalonSite.git"
+  },
+  "author": "sadie hawkins",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shermangore/SalonSite/issues"
+  },
+  "homepage": "https://github.com/shermangore/SalonSite#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "express-handlebars": "^3.0.0",
+    "handlebars": "^4.0.10",
+    "mysql": "^2.14.1",
+    "mysql2": "^1.4.0",
+    "sequelize": "^4.4.10"
+  }
+}
