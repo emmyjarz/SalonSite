@@ -6,8 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Salon</title>
     <link rel="stylesheet" href="/assets/css/reset.css" type="text/css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/salon.css" type="text/css" />
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
 <body>
     {{{body}}}
 </body>
+
+<script>
+    $(document).ready(function() {
+        $(".full-content").on("mouseover", function() {
+            $(".full-content").toggleClass("fc-mouseover");
+        });
+
+        $(".full-content").on("mouseout", function() {
+            $(".full-content").toggleClass("fc-mouseover");
+        });
+    });
+</script>
 </html>

@@ -7,6 +7,7 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var methodOverride = require("method-override");
+let path = require("path");
 
 // Sets up the Express App
 // =============================================================
