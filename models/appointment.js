@@ -1,3 +1,4 @@
+//I don't know why i did this file.
 module.exports = function (sequelize, DataTypes) {
     var Appointment = sequelize.define("Appointment", {
         staff_name: {
@@ -24,8 +25,8 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false
         },
-        phone_number: {
-            type: DataTypes.INT,
+        phone: {
+            type: DataTypes.INTEGER,
             allowNull: false
         },
         email: {

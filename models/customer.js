@@ -8,10 +8,6 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false
         },
-        preferred_name: {
-            type: DataTypes.STRING,
-            allowNull: true
-        },
         birthday: {
             type: DataTypes.STRING,
             allowNull: true
@@ -20,22 +16,47 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: true
         },
-        phone_number: {
-            type: DataTypes.INT,
+        phone: {
+            type: DataTypes.INTEGER,
             allowNull: false
         },
-        emergency_contact_name: {
+        email: {
             type: DataTypes.STRING,
-            allowNull: false
-        },
-        emergency_contact_phone: {
-            type: DataTypes.STRING,
-            allowNull: false
+            isUnique: true,
+            allowNull: false,
+            validate: {
+                isEmail: true
+            }
         },
         comment: {
             type: DataTypes.STRING,
             allowNull: true
         }
     });
+
+    Customer.associate = (models) => {
+        Customer.hasMany(models.Appointment, {
+            onDelete: "cascade"
+        });
+    };
+
+    Customer.associate = (models) => {
+        Customer.hasMany(models.Password, {
+            onDelete: "cascade"
+        });
+    };
+
+    Customer.associate = (models) =>{
+        Customer.hasMany(models.Product,{
+            onDelete:"cascade"
+        });
+    };
+    
+    Customer.associate = (models) => {
+        Customer.hasMany(models.Purchase, {
+            onDelete: "cascade"
+        });
+    };
+
     return Customer;
 }
