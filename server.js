@@ -34,29 +34,16 @@ app.use(express.static("public"));
 // Override with POST having ?_method=DELETE
 app.use(methodOverride("_method"));
 
-
-
-
-
 // Routes
 // =============================================================
-require("./routes/customer.js")(app);
-require("./routes/admin.js")(app);
+// Import routes and give the server access to them.
+var salon = require("./controllers/salon_controller")
+var customer = require("./controllers/customer_controller")
+var admin = require("./controllers/admin_controller")
 
-
-
-// // Import routes and give the server access to them.
-// var routes = require("./controllers/burgers_controller.js");
-
-
-
-// app.use("/", routes);
-
-
-
-
-
-
+app.use("/salon", salon);
+app.use("/customer", customer);
+app.use("/admin", admin);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
