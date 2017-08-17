@@ -40,17 +40,23 @@ app.use(methodOverride("_method"));
 
 // Routes
 // =============================================================
-require("./routes/customer.js")(app);
-require("./routes/admin.js")(app);
+
 
 
 
 // // Import routes and give the server access to them.
-// var routes = require("./controllers/burgers_controller.js");
+var salon = require("./controllers/salon_controller")
+var customer = require("./controllers/customer_controller")
+var admin = require("./controllers/admin_controller")
+
+
+app.use("/salon", salon);
+app.use("/customer", customer);
+app.use("/admin", admin);
 
 
 
-// app.use("/", routes);
+
 
 
 
