@@ -40,8 +40,8 @@ app.use(methodOverride("_method"));
 
 // Routes
 // =============================================================
-require("./routes/customer.js")(app);
-require("./routes/admin.js")(app);
+require("./controllers/customer_controller.js")(app);
+require("./controllers/admin_controller.js")(app);
 
 
 

@@ -21,7 +21,7 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: true
         },
         phone_number: {
-            type: DataTypes.INT,
+            type: DataTypes.INTEGER,
             allowNull: false
         }, 
         emergency_contact_name:{
