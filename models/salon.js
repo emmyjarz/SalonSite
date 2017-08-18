@@ -15,5 +15,19 @@ module.exports = function(sequelize, DataTypes) {
       type:DataTypes.STRING,
       }
     });
+
+  Salon.associate =  (models)=> {
+   
+    Salon.hasMany(models.Email, {
+      onDelete: "cascade"
+    });
+    Salon.hasMany(models.Phone, {
+      onDelete: "cascade"
+    });
+  };
+
+
+
+
   return Salon;
 };

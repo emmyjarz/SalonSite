@@ -34,29 +34,19 @@ module.exports = function (sequelize, DataTypes) {
         }
     });
 
-    // Customer.associate = (models) => {
-    //     Customer.hasMany(models.Appointment, {
-    //         onDelete: "cascade"
-    //     });
-    // };
-
-    // Customer.associate = (models) => {
-    //     Customer.hasMany(models.Password, {
-    //         onDelete: "cascade"
-    //     });
-    // };
-
-    // Customer.associate = (models) => {
-    //     Customer.hasMany(models.Product, {
-    //         onDelete: "cascade"
-    //     });
-    // };
-
-    // Customer.associate = (models) => {
-    //     Customer.hasMany(models.Purchase, {
-    //         onDelete: "cascade"
-    //     });
-    // };
-
+    Customer.associate = (models) => {
+        Customer.hasMany(models.Email, {
+            onDelete: "cascade"
+        });
+        
+        Customer.hasMany(models.Phone, {
+            onDelete: "cascade"
+        });
+        
+        Customer.hasMany(models.Address, {
+            onDelete: "cascade"
+        });
+    };
+ 
     return Customer;
 }

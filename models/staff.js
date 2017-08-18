@@ -7,6 +7,10 @@ module.exports = function (sequelize, DataTypes) {
         lastname: {
             type: DataTypes.STRING,
             // // allowNull: false
+        }, 
+        bio: {
+            type: DataTypes.TEXT,
+            // allowNull: true
         },
         station: {
             type: DataTypes.STRING,
@@ -34,7 +38,18 @@ module.exports = function (sequelize, DataTypes) {
         }
     });
     Staff.associate = (models) => {
-        Staff.belongsToMany(models.Service, {through:models.Staff_service});
+        Staff.belongsToMany(models.Service, {
+            through:models.Staff_service
+        });
+        Staff.hasMany(models.Email, {
+            onDelete:"cascade"
+        });
+        Staff.hasMany(models.Phone, {
+            onDelete:"cascade"
+        });
+        Staff.hasMany(models.Address, {
+            onDelete:"cascade"
+        });
     };
     return Staff;
 }
