@@ -1,26 +1,24 @@
 module.exports = function (sequelize, DataTypes) {
     var Product = sequelize.define("Product", {
-        product_line: {
+        line: {
             type: DataTypes.STRING,
             allowNULL: false
         },
-        product_sku: {
-            type: DataTypes.INTEGER,
-            allowNULL: true,
-            validate: {
-                isInt: true
-            }
+        brand: {
+            type: DataTypes.STRING,
+            allowNULL: false,
+           
         },
-        product_name: {
+        name: {
             type: DataTypes.STRING,
             allowNULL: false
 
         },
-        product_description: {
+        description: {
             type: DataTypes.TEXT,
             allowNULL: true
         },
-        product_size:{
+        size:{
             type: DataTypes.STRING,
             allowNULL: true
         },
@@ -49,16 +47,21 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNULL: true
 
+        }, 
+        photo: {
+            type: DataTypes.STRING,
+            allowNULL: true
+
         }
         
     });
 
-    Product.associate = (models) => {
-        Product.belongsTo(models.Customer, {
-            foreignKey: {
-                allowNull: false
-            }
-        });
-    };
+    // Product.associate = (models) => {
+    //     Product.belongsTo(models.Customer, {
+    //         foreignKey: {
+    //             allowNull: false
+    //         }
+    //     });
+    // };
     return Product;
 }
