@@ -1,20 +1,19 @@
 module.exports = function(sequelize, DataTypes) {
-  var Salon = sequelize.define("salons", {
-    salon_name: {
+  var Salon = sequelize.define("Salon", {
+    name: {
       type: DataTypes.STRING,
       allowNull: false
-    }
-  }, {
-    timestamps: true
-  });
-
-//   Burger.associate = function(models) {
-//     Burger.belongsTo(models.customers, {
-//       foreignKey: {
-//         allowNull: false
-//       }
-//     });
-//   };
-
+    }, 
+    password:{
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    description: {
+      type:DataTypes.TEXT
+    }, 
+    photo:{
+      type:DataTypes.STRING,
+      }
+    });
   return Salon;
 };

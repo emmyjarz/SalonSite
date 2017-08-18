@@ -8,25 +8,25 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false
         },
-        birthday: {
+        password: {
             type: DataTypes.STRING,
-            allowNull: true
-        },
-        address: {
-            type: DataTypes.STRING,
-            allowNull: true
-        },
-        phone: {
-            type: DataTypes.INTEGER,
             allowNull: false
         },
-        email: {
+        gender: {
             type: DataTypes.STRING,
-            isUnique: true,
-            allowNull: false,
+            allowNull: true
+        },
+        balance: {
+            type: DataTypes.DECIMAL(10, 2),
             validate: {
-                isEmail: true
+                isDecimal: true
             }
+        },
+        lastvisit: {
+            type: DataTypes.STRING,
+        },
+        photo: {
+            type: DataTypes.STRING,
         },
         comment: {
             type: DataTypes.STRING,
@@ -34,29 +34,29 @@ module.exports = function (sequelize, DataTypes) {
         }
     });
 
-    Customer.associate = (models) => {
-        Customer.hasMany(models.Appointment, {
-            onDelete: "cascade"
-        });
-    };
+    // Customer.associate = (models) => {
+    //     Customer.hasMany(models.Appointment, {
+    //         onDelete: "cascade"
+    //     });
+    // };
 
-    Customer.associate = (models) => {
-        Customer.hasMany(models.Password, {
-            onDelete: "cascade"
-        });
-    };
+    // Customer.associate = (models) => {
+    //     Customer.hasMany(models.Password, {
+    //         onDelete: "cascade"
+    //     });
+    // };
 
-    Customer.associate = (models) =>{
-        Customer.hasMany(models.Product,{
-            onDelete:"cascade"
-        });
-    };
-    
-    Customer.associate = (models) => {
-        Customer.hasMany(models.Purchase, {
-            onDelete: "cascade"
-        });
-    };
+    // Customer.associate = (models) => {
+    //     Customer.hasMany(models.Product, {
+    //         onDelete: "cascade"
+    //     });
+    // };
+
+    // Customer.associate = (models) => {
+    //     Customer.hasMany(models.Purchase, {
+    //         onDelete: "cascade"
+    //     });
+    // };
 
     return Customer;
 }
