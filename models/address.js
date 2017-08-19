@@ -19,13 +19,9 @@ module.exports = function (sequelize, DataTypes) {
                 isInt: true
             }
         }
-
     });
 
     Address.associate = (models) => {
-    
-        
-     
         Address.hasMany(models.Customer, {
             onDelete: "cascade"
         });
