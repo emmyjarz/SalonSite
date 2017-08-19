@@ -41,20 +41,14 @@ module.exports = function (sequelize, DataTypes) {
         Staff.belongsToMany(models.Service, {
             through:models.Staff_service
         });
-        Staff.belongsTo(models.Email, {
-            foreignKey: {
-                allowNull: false
-            }
+        Staff.hasMany(models.Email, {
+            onDelete:"cascade"
         });
-        Staff.belongsTo(models.Phone, {
-            foreignKey: {
-                allowNull: false
-            }
+        Staff.hasMany(models.Phone, {
+            onDelete:"cascade"
         });
-        Staff.belongsTo(models.Address, {
-            foreignKey: {
-                allowNull: false
-            }
+        Staff.hasMany(models.Address, {
+            onDelete:"cascade"
         });
     };
     return Staff;
