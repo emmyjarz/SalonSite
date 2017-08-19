@@ -26,21 +26,12 @@ module.exports = function (sequelize, DataTypes) {
     
         
      
-            Address.belongsTo(models.Salon, {
-                foreignKey: {
-                    allowNull: false
-                }
-            });
-            Address.belongsTo(models.Customer, {
-                foreignKey: {
-                    allowNull: false
-                }
-            });
-            Address.belongsTo(models.Staff, {
-                foreignKey: {
-                    allowNull: false
-                }
-            });
+        Address.hasMany(models.Customer, {
+            onDelete: "cascade"
+        });
+        Address.hasMany(models.Staff, {
+            onDelete: "cascade"
+        });
         
     };
 

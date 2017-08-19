@@ -18,11 +18,20 @@ module.exports = function(sequelize, DataTypes) {
 
   Salon.associate =  (models)=> {
    
-    Salon.hasMany(models.Email, {
-      onDelete: "cascade"
+    Salon.belongsTo(models.Email, {
+      foreignKey: {
+        allowNull: false
+      }
     });
-    Salon.hasMany(models.Phone, {
-      onDelete: "cascade"
+    Salon.belongsTo(models.Phone, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+    Salon.belongsTo(models.Address, {
+      foreignKey: {
+        allowNull: false
+      }
     });
   };
 

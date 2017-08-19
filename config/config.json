@@ -1,7 +1,11 @@
 {
   "development": {
     "username": "root",
+<<<<<<< HEAD
     "password": "",
+=======
+    "password": "milomilo",
+>>>>>>> 5a1277fabf8a8cf86e94924f925cb6fa0f1b78c2
     "database": "salon_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
