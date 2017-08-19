@@ -2,21 +2,21 @@ var express = require("express");
 var router = express.Router();
 var db = require("../models");
 
-function staff(){
+// function staff(){
 
-    db.Staff.create({
-        name:"test1"
+//     db.Staff.create({
+//         name:"test1"
         
-    });
-}
-function service(){
+//     });
+// }
+// function service(){
 
-    db.Service.create({
-        name: "wash"
-    });
-}
-staff();void
-service();
+//     db.Service.create({
+//         name: "wash"
+//     });
+// }
+// staff();void
+// service();
 
 
 

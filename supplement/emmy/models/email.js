@@ -10,14 +10,20 @@ module.exports = function (sequelize, DataTypes) {
         }
     });
     Email.associate = function (models) {
-        Email.hasMany(models.Salon, {
-            onDelete: "cascade"
+        Email.belongsTo(models.Salon, {
+            foreignKey: {
+                allowNull: false
+            }
         });
-        Email.hasMany(models.Customer, {
-            onDelete: "cascade"
+        Email.belongsTo(models.Customer, {
+            foreignKey: {
+                allowNull: false
+            }
         });
-        Email.hasMany(models.Staff, {
-            onDelete: "cascade"
+        Email.belongsTo(models.Staff, {
+            foreignKey: {
+                allowNull: false
+            }
         });
     };
     return Email;

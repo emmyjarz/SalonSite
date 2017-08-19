@@ -35,20 +35,16 @@ module.exports = function (sequelize, DataTypes) {
     });
 
     Customer.associate = (models) => {
-        Customer.belongsTo(models.Email, {
-            foreignKey: {
-                allowNull: false
-            }
+        Customer.hasMany(models.Email, {
+            onDelete: "cascade"
         });
-        Customer.belongsTo(models.Phone, {
-            foreignKey: {
-                allowNull: false
-            }
+        
+        Customer.hasMany(models.Phone, {
+            onDelete: "cascade"
         });
-        Customer.belongsTo(models.Address, {
-            foreignKey: {
-                allowNull: false
-            }
+        
+        Customer.hasMany(models.Address, {
+            onDelete: "cascade"
         });
     };
  
