@@ -1,0 +1,69 @@
+<div class="container">
+
+	<div class="row">
+   		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 contact-box">
+			<h2>{{salon name}}</h2>
+	 		<h4>{{salon addr}}</h4>
+	 		<h4>{{salon ph}}</h4>
+	   		<h4><a href="{{salon email}}"></h4>
+	   	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+    	</div>
+    	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+    	</div>
+  	</div>
+  	<div class="row">
+    	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 map-box"></div>
+    	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 contact-box">
+    		<form action="" method="post">
+    			<div class="form-group">
+    				<label for="firstNameContact" class="label-short col-xs-6 col-sm-6 col-md-3 col-lg-3">First Name</label>
+    				<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+    					<input type="text" class="input-short" id="firstNameContact">
+    				</div>
+    				<label for="lastNameContact" class="label-short col-xs-6 col-sm-6 col-md-3 col-lg-3">Last Name</label>
+    				<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+    					<input type="text" class="input-short" id="lastNameContact">
+    				</div>
+    			</div>
+    			<div class="form-group">
+    				<label for="phoneContact">Phone</label>
+    				<input type="tel" class="form-control" id="phoneContact">
+  				</div>
+  				<div class="form-group">
+  					<label for="emailAddress">Email address</label>
+    				<input type="email" class="form-control" id="emailAddress">
+  				</div>
+  				<div class="form-group">
+  					<select class="form-control">
+  						<label for="reasonContact">Choose one or more</label>
+						<option class="reasonContact">Make me beautiful!</option>
+						  <optionclass="reasonContact">I'd like a special occasion consultation</option>
+						  <optionclass="reasonContact">I have some questions</option>	
+					</select>
+				<div class="form-group">
+					<textarea class="form-control" rows="8" placeholder="Tell us more..."></textarea>	
+				</div>
+				<button type="submit" class="btn btn-default">Submit</button>
+			</form>	
+		</div>
+  	</div>
+</div>
+
+<script>
+    function initMap() {
+       var salon = {lat: 34.151417, lng: -118.453617};
+       var map = new google.maps.Map(document.getElementById('map'), {
+          	center: salon,
+          	zoom: 15
+        });
+        var marker = new google.maps.Marker({
+        	position: salon,
+        	map: map
+        });	
+    }
+</script>
+
+
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJing0S_ayqBsEh2LqCfwCj1TvVwuX9Iw&callback=initMap">
+</script>

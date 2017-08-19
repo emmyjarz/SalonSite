@@ -10,4 +10,8 @@ router.get("/services", (req, res) => {
   res.render("services", { data: "hello" });
 });
 
+router.get("/contactus", (req, res) => {
+  res.render("contactus", {data: "hello"}); 
+});
+
 module.exports = router;
