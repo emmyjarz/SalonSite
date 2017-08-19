@@ -1,21 +1,62 @@
-<div id="ServicesDiv">
-    <p>
-        Matey topmast hornswaggle execution dock mizzen barkadeer pressgang American Main capstan Cat o'nine tails barque bilge rat
-        carouser. Gun to go on account lad crow's nest walk the plank overhaul lateen sail boom poop deck hogshead coxswain
-        mizzenmast capstan. Measured fer yer chains run a shot across the bow Nelsons folly pinnace salmagundi poop deck
-        hempen halter doubloon loaded to the gunwalls Gold Road spike grog blossom interloper. Execution dock long clothes
-        starboard matey galleon knave hogshead clipper keel rigging maroon Sea Legs holystone. Fore avast man-of-war aye
-        Pirate Round chase bowsprit broadside swab tackle lad blow the man down provost. Jack rutters clipper port grog poop
-        deck coxswain gibbet quarter furl Cat o'nine tails parley keelhaul. Loot strike colors lanyard Letter of Marque gally
-        bring a spring upon her cable ye Pirate Round hang the jib pillage marooned piracy Arr. Cat o'nine tails aye port
-        deadlights jury mast overhaul run a rig broadside bilge rat fire in the hole cable pink Shiver me timbers. Flogging
-        Sail ho interloper scuppers reef sails scallywag ho deadlights mizzenmast parrel cable brig Sink me. Fathom poop
-        deck brig maroon parrel topgallant sutler man-of-war quarterdeck driver squiffy scuppers case shot. Yard jib run
-        a shot across the bow crimp hulk bilged on her anchor spyglass hearties rope's end league jury mast line spirits.
-        Ye lad interloper topsail yard wench transom topmast quarterdeck topgallant driver gangway tender. Chandler piracy
-        me bilge rat gun weigh anchor bring a spring upon her cable log grog dance the hempen jig ballast come about loot.
-        Boatswain execution dock black jack run a rig case shot carouser red ensign topsail crow's nest Spanish Main Cat
-        o'nine tails avast cog. Spirits hempen halter wherry Plate Fleet aye gangway quarter keelhaul smartly grapple bilge
-        rat belaying pin wench.
-    </p>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active"><a href="#HomeDiv" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="#AboutDiv" class="nav-link">About</a></li>
+            <li class="nav-item"><a href="#ServicesDiv" class="nav-link">Services</a></li>
+            <li class="nav-item"><a href="#ProductsDiv" class="nav-link">Products</a></li>
+            <li class="nav-item"><a href="#ContactDiv" class="nav-link">Contact Us</a></li>
+        </ul>
+    </div>
+</nav>
+<div id="ServicesDiv" class="full-content">
+    <p id="service-text">Full Brazilian Blow-Outs!</p>
 </div>
+<script>
+    let svcImgs = [
+        {
+            title: 'Blow Dry!', 
+            url: 'url("http://localhost:8080/assets/images/blowdry.jpg")'
+        }, 
+        {
+            title: 'Color!',
+            url: 'url("http://localhost:8080/assets/images/color2.jpg")',
+        },
+        {
+            title: 'Men\'s Haircut!',
+            url: 'url("http://localhost:8080/assets/images/MensHaircut.jpg")'
+        }, 
+        {
+            title: 'Full Brazilian Blow-Outs!',
+            url: 'url("http://localhost:8080/assets/images/stylists.jpg")'
+        },
+        {
+            title: 'Special Occassion Up-Do!',
+            url: 'url("http://localhost:8080/assets/images/updo.jpg")'
+        }
+    ];
+
+    $(document).ready(function () {
+        setInterval(changeService, 3000);
+    });
+
+    function changeService() {
+        let curImg = $("#service-text").html();
+        let curImgIdx = svcImgs.map(function (e) {
+            return e.title;
+        }).indexOf(curImg);
+
+        if (curImgIdx >= 0 && curImgIdx < svcImgs.length - 1) {
+            let newIdx = curImgIdx + 1;
+
+            $(".full-content").css("background", `no-repeat center/100% ${svcImgs[newIdx].url}`);
+            $("#service-text").html(svcImgs[newIdx].title);
+        } else {
+            $(".full-content").css("background", `no-repeat center/100% ${svcImgs[0].url}`);
+            $("#service-text").html(svcImgs[0].title);
+
+            curImgIdx = 0;
+        }
+    }
+
+</script>
