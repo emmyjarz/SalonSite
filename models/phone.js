@@ -1,16 +1,12 @@
 module.exports = function (sequelize, DataTypes) {
     var Phone = sequelize.define("Phone", {
         mobile: {
-            type: DataTypes.INTEGER,
-            validate: {
-                isInt: true
-            }
+            type: DataTypes.STRING,
+           
         },
         home: {
-            type: DataTypes.INTEGER,
-            validate: {
-                isInt: true
-            }
+            type: DataTypes.STRING,
+            
         },
 
     });

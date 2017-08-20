@@ -1,0 +1,57 @@
+<div class="container">
+    {{!-- show product --}} 
+ {{#each product}} 
+
+{{this.id}}. {{this.brand}} 
+<form action="/{{this.id}}?_method=PUT" method="POST">
+
+<button type="submit">edit</button>
+</form>
+<form action="/admin/product/delete/{{this.id}}?_method=DELETE" method="POST">
+
+<button type="submit">delete</button>
+<br>
+</form>
+  {{/each}}
+
+
+
+
+
+    {{!-- add product --}}
+    <div class="row">
+        <h1>Add Product</h1>
+        <form class="form-group" action="/admin/product/add" method="POST">
+       <input type="text" name="brand" placeholder="brand">
+       <input type="text" name="name" placeholder="name">
+       <input type="text" name="decription" placeholder="decription">
+       <input type="text" name="size" placeholder="size">
+       <input type="text" name="price" placeholder="price">
+       <input type="text" name="stock_quantity" placeholder="stock_quantity">
+       <input type="text" name="cost" placeholder="cost">
+       <input type="text" name="vendor" placeholder="vendor">
+       <input type="text" name="photo" placeholder="photo">
+       <button type="submit">Add</button>
+    </form>
+
+    </div>
+{{!-- update product --}}
+<div class="row">
+    <h1>Update Product</h1>
+    <form class="form-group" action="/admin" method="POST">
+        <input type="text" name="brand" placeholder="brand">
+        <input type="text" name="name" placeholder="name">
+        <input type="text" name="decription" placeholder="decription">
+        <input type="text" name="size" placeholder="size">
+        <input type="text" name="price" placeholder="price">
+        <input type="text" name="stock_quantity" placeholder="stock_quantity">
+        <input type="text" name="cost" placeholder="cost">
+        <input type="text" name="vendor" placeholder="vendor">
+        <input type="text" name="photo" placeholder="photo">
+        <button type="submit">Add</button>
+    </form>
+
+</div>
+
+
+</div>

@@ -1,0 +1,12 @@
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//Apple Inc.//iPhone OS 10.3.3//EN
+N:;14708 Ventura Blvd;;;
+FN: 14708 Ventura Blvd   
+item1.ADR;type=pref:;;14708 Ventura Blvd;Sherman Oaks;CA;91403-3674;United States
+item1.X-ABLabel:Address
+item1.X-ABADR:us
+item2.URL;type=pref:https://maps.apple.com/?address=14708%20Ventura%20Blvd\,%20Unit%206\,%20FL%202\,%20Sherman%20Oaks\,%20CA%20%2091403\,%20United%20States&ll=34.150898\,-118.453778&q=14708%20Ventura%20Blvd&t=m
+item2.X-ABLabel:map url
+END:VCARD
+
