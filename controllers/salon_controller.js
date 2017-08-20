@@ -22,9 +22,10 @@ router.get("/", (req, res) => {
     console.log(data.Phone.dataValues.mobile);
     console.log(data.Email.dataValues.email);
 
+    res.render("index", { about: data });
+  
   });
-  // res.end();
-  res.render("index", { about: data });
+  
 //show product on the product page
 
 
