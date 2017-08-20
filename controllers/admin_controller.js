@@ -3,15 +3,11 @@ var router = express.Router();
 var db = require("../models");
 
 
-
-
-
 // show all product
 router.get("/product", (req, res)=>{
     db.Product.findAll().then(data =>{
-
         res.render("adminProduct", {product:data});
-    })
+    });
 });
 
 //insert product in database
@@ -29,9 +25,37 @@ router.post("/product/add", (req, res) =>{
             vendor:req.body.vendor,
             photo:req.body.photo
         }
-    ).then(
-        res.redirect("/admin/product"));
+    ).then(data =>{
+
+        res.redirect("/admin/product")
+    });
 });
+//update product - show update product
+router.get("/product/edit/:id", (req, res) =>{
+    console.log(req.params.id)
+        db.Product.findOne({
+      
+        where:{
+            id: req.params.id
+        }
+    }).then(data =>{
+        res.render("adminProduct", {editproduct:data})
+    });
+});
+//update - update database
+router.put("/product/edit/:id", (req, res)=>{
+   db.Product.update(req.body,{
+       where:{
+           id:req.params.id
+       }
+   }).then(data =>{
+       res.redirect("/admin/product")
+   })
+})
+
+
+
+
 //delete product in database
 router.delete("/product/delete/:id", (req, res)=>{
     // console.log(req.params.id);
@@ -39,7 +63,11 @@ router.delete("/product/delete/:id", (req, res)=>{
         where:{
             id: req.params.id
         }
-    }).then(
-        res.redirect("/admin/product"));
+    }).then(data =>{
+        res.redirect("/admin/product")
+    });
 });
+
+
+
 module.exports = router;
