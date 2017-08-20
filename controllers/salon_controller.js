@@ -6,7 +6,7 @@ router.get("/", (req, res) => {
   //show salon info on the about page
   db.Salon.findOne({
     where: {
-      id: 1
+      name: "Blvd6 Salon"
     },
     include: [db.Address
       , db.Email, db.Phone
@@ -27,6 +27,8 @@ router.get("/", (req, res) => {
   });
   
 //show product on the product page
+
+
 
 
 

@@ -3,10 +3,12 @@
  {{#each product}} 
 
 {{this.id}}. {{this.brand}} 
-<form action="/{{this.id}}?_method=PUT" method="POST">
+{{!-- update --}}
+<form action="/admin/product/edit/{{this.id}}" method="GET">
 
 <button type="submit">edit</button>
 </form>
+{{!-- delete --}}
 <form action="/admin/product/delete/{{this.id}}?_method=DELETE" method="POST">
 
 <button type="submit">delete</button>
@@ -24,7 +26,7 @@
         <form class="form-group" action="/admin/product/add" method="POST">
        <input type="text" name="brand" placeholder="brand">
        <input type="text" name="name" placeholder="name">
-       <input type="text" name="decription" placeholder="decription">
+       <input type="text" name="decription" placeholder="description">
        <input type="text" name="size" placeholder="size">
        <input type="text" name="price" placeholder="price">
        <input type="text" name="stock_quantity" placeholder="stock_quantity">
@@ -38,17 +40,17 @@
 {{!-- update product --}}
 <div class="row">
     <h1>Update Product</h1>
-    <form class="form-group" action="/admin" method="POST">
-        <input type="text" name="brand" placeholder="brand">
-        <input type="text" name="name" placeholder="name">
-        <input type="text" name="decription" placeholder="decription">
-        <input type="text" name="size" placeholder="size">
-        <input type="text" name="price" placeholder="price">
-        <input type="text" name="stock_quantity" placeholder="stock_quantity">
-        <input type="text" name="cost" placeholder="cost">
-        <input type="text" name="vendor" placeholder="vendor">
-        <input type="text" name="photo" placeholder="photo">
-        <button type="submit">Add</button>
+    <form id="updateForm" class="form-group" action="/admin/product/edit/{{editproduct.id}}?_method=PUT" method="POST">
+        <input type="text" name="brand" placeholder="brand" value = "{{editproduct.brand}}">
+        <input type="text" name="name" placeholder="name" value = "{{editproduct.name}}">
+        <input type="text" name="decription" placeholder="description" value = "{{editproduct.description}}">
+        <input type="text" name="size" placeholder="size" value = "{{editproduct.size}}">
+        <input type="text" name="price" placeholder="price" value = "{{editproduct.price}}">
+        <input type="text" name="stock_quantity" placeholder="stock_quantity" value = "{{editproduct.stock_quantity}}">
+        <input type="text" name="cost" placeholder="cost" value = "{{editproduct.cost}}">
+        <input type="text" name="vendor" placeholder="vendor" value = "{{editproduct.vendor}}">
+        <input type="text" name="photo" placeholder="photo" value = "{{editproduct.photo}}">
+        <button type="submit">update</button>
     </form>
 
 </div>
