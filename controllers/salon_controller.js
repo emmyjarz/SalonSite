@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 var db = require("../models");
 //display
-router.get("/", (req, res) => {
+router.get("/about", (req, res) => {
   //show salon info on the about page
   db.Salon.findOne({
     where: {
