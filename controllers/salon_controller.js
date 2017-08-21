@@ -23,33 +23,25 @@ router.get("/about", (req, res) => {
     console.log(data.Email.dataValues.email);
 
     res.render("index", { about: data });
-  
+
   });
-  
-//show product on the product page
-
-
-
-
-
-
-
-
-
-
-
 });
 
+//show product on the product page
+router.get("/", (req, res) => {
+  res.render("index", { data: "hello" });
+});
 
+router.get("/products", (req, res) => {
+  res.render("index", { data: "hello" });
+});
 
+router.get("/services", (req, res) => {
+  res.render("services", { data: "hello" });
+});
 
-
-// router.get("/services", (req, res) => {
-//   res.render("services", { data: "hello" });
-// });
-
-// router.get("/contactus", (req, res) => {
-//   res.render("contactus", {data: "hello"}); 
-// });
+router.get("/contactus", (req, res) => {
+  res.render("contactus", { data: "hello" });
+});
 
 module.exports = router;
