@@ -10,8 +10,8 @@ router.get("/product", (req, res)=>{
     });
 });
 
-//insert product in database
-router.post("/product/add", (req, res) =>{
+//add product in database
+router.post("/product/new", (req, res) =>{
     // console.log(req.body)
     db.Product.create(
         {
@@ -30,8 +30,8 @@ router.post("/product/add", (req, res) =>{
         res.redirect("/admin/product")
     });
 });
-//update product - show update product
-router.get("/product/edit/:id", (req, res) =>{
+//edit product - show update product
+router.get("/product/:id/edit", (req, res) =>{
     console.log(req.params.id)
         db.Product.findOne({
       
@@ -43,7 +43,7 @@ router.get("/product/edit/:id", (req, res) =>{
     });
 });
 //update - update database
-router.put("/product/edit/:id", (req, res)=>{
+router.put("/product/:id", (req, res)=>{
    db.Product.update(req.body,{
        where:{
            id:req.params.id
@@ -57,7 +57,7 @@ router.put("/product/edit/:id", (req, res)=>{
 
 
 //delete product in database
-router.delete("/product/delete/:id", (req, res)=>{
+router.delete("/product/:id", (req, res)=>{
     // console.log(req.params.id);
     db.Product.destroy({
         where:{
