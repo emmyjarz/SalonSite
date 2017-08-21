@@ -6,9 +6,6 @@ router.get("/products", (req, res) => {
   res.render("index", { data: "hello" });
 });
 
-
-
-
 router.get("/services", (req, res) => {
   res.render("services", { data: "hello" });
 });

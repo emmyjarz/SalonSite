@@ -32,7 +32,7 @@
         },
         {
             title: 'Special Occassion Up-Do!',
-            url: 'url("http://localhost:8080/assets/images/updo.jpg")'
+            url: 'url("http://localhost:8080/assets/images/updo.png")'
         }
     ];
 
@@ -51,6 +51,29 @@
 
             $(".full-content").css("background", `no-repeat center/100% ${svcImgs[newIdx].url}`);
             $("#service-text").html(svcImgs[newIdx].title);
+
+//text-shadow: 1px 1px 0 #b989bd;
+console.log("CI: ", svcImgs[newIdx].title);
+            switch (svcImgs[newIdx].title) {
+                case 'Men\'s Haircut!':
+                    $("#service-text").css("color", "#FFF").css("text-shadow", "1px 1px 0 #b989bd");
+                    break;
+                case 'Blow Dry!':
+                    $("#service-text").css("color", "#FFF").css("text-shadow", "1px 1px 0 #b989bd");
+                    break;
+                case 'Color!':
+                    $("#service-text").css("color", "#000").css("text-shadow", "2px 1px 0 #f9bdf0");
+                    break;
+                case 'Full Brazilian Blow-Outs!':
+                    $("#service-text").css("color", "#FFF").css("text-shadow", "2px 1px 0 #000");
+                    break;
+                case 'Special Occassion Up-Do!':
+                    $("#service-text").css("color", "#FFF").css("text-shadow", "2px 1px 0 #b989bd");
+                    break;
+                default:
+                    $("#service-text").css("color", "#FFF").css("text-shadow", "1px 1px 0 #b989bd");
+                    break;
+            }
         } else {
             $(".full-content").css("background", `no-repeat center/100% ${svcImgs[0].url}`);
             $("#service-text").html(svcImgs[0].title);
