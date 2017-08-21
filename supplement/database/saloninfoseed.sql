@@ -9,12 +9,12 @@ select * from addresses;
 select * from phones;
 select * from emails;
 
--- delete from salons where id = 2;
 
--- insert info the main table first
 
-insert into addresses  (address1, city, state, zip, createdAt, updatedAt) values("14708 Ventura Blvd","Sherman Oaks","CA", 91403, now(), now());
+-- insert info the main table first (we set email to be unique)
+
 insert into emails (email, createdAt, updatedAt) values ("blvd6salon@gmail.com", now(), now());
+insert into addresses  (address1, address2, city, state, zip, createdAt, updatedAt) values("14708 Ventura Blvd","Suite 6, 222", "Sherman Oaks","CA", 91403, now(), now());
 insert into phones (mobile, createdAt, updatedAt) values ("3236877190", now(), now());
 
 

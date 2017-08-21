@@ -2,7 +2,6 @@ var express = require("express");
 var router = express.Router();
 var db = require("../models");
 
-
 // show all product
 router.get("/product", (req, res)=>{
     db.Product.findAll().then(data =>{
@@ -53,9 +52,6 @@ router.put("/product/:id", (req, res)=>{
    })
 })
 
-
-
-
 //delete product in database
 router.delete("/product/:id", (req, res)=>{
     // console.log(req.params.id);
@@ -67,6 +63,11 @@ router.delete("/product/:id", (req, res)=>{
         res.redirect("/admin/product")
     });
 });
+
+
+
+
+
 
 
 

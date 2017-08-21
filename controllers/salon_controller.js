@@ -25,31 +25,23 @@ router.get("/about", (req, res) => {
     res.render("index", { about: data });
   
   });
-  
+});
 //show product on the product page
 
 
 
 
 
-
-
-
-
-
+router.get("/services", (req, res) => {
+  db.Service.findAll().then(data =>{
+console.log(data);
+    res.render("services", { services: data });
+  })
 
 });
 
-
-
-
-
-// router.get("/services", (req, res) => {
-//   res.render("services", { data: "hello" });
-// });
-
-// router.get("/contactus", (req, res) => {
-//   res.render("contactus", {data: "hello"}); 
-// });
+router.get("/contactus", (req, res) => {
+  res.render("contactus", {data: "hello"}); 
+});
 
 module.exports = router;
