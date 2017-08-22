@@ -24,7 +24,7 @@ router.get("/about", (req, res) => {
     console.log(data.Phone.dataValues.mobile);
     console.log(data.Email.dataValues.email);
 
-    res.render("index", { about: data });
+    res.render("about", { about: data });
 
   });
 });
@@ -48,22 +48,26 @@ router.get("/contactus", (req, res) => {
     console.log(data.Address.dataValues.zip);
     console.log(data.Phone.dataValues.mobile);
     console.log(data.Email.dataValues.email);
+    res.render("contactus", { contactus: data });
 
+    });
+});
 //show product on the product page
 router.get("/", (req, res) => {
-  res.render("index", { data: "hello" });
+  res.render("index", { data: hello });
 });
 
 router.get("/products", (req, res) => {
-  res.render("index", { data: "hello" });
+  res.render("products", { data: "hello" });
 });
 
 router.get("/services", (req, res) => {
-  res.render("services", { data: "hello" });
+  db.Service.findAll().then(data => {
+    console.log(data);
+    res.render("services", { services: data });
+  })
 });
 
-router.get("/contactus", (req, res) => {
-  res.render("contactus", { data: "hello" });
-});
+
 
 module.exports = router;
