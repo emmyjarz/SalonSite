@@ -7,7 +7,15 @@ router.get("/", (req, res) => {
 });
 
 router.get("/products", (req, res) => {
-  res.render("index", { data: "hello" });
+	db.Product.findAll({
+		where: {
+			brand: req.body.brand
+		},
+		attributes: ['name', 'size', 'price']
+	}).then(function(data) {
+		console.log(data);
+		res.render("index", { data: "hello" });
+	});  	
 });
 
 
