@@ -25,19 +25,8 @@ router.get("/about", (req, res) => {
     console.log(data.Email.dataValues.email);
 
     res.render("index", { about: data });
+
   });
-});
-//show product on the product page
-
-
-
-
-//show service on the page
-router.get("/services", (req, res) => {
-  db.Service.findAll().then(data => {
-    console.log(data);
-    res.render("services", { services: data });
-  })
 });
 //show contactus
 router.get("/contactus", (req, res) => {
@@ -60,9 +49,21 @@ router.get("/contactus", (req, res) => {
     console.log(data.Phone.dataValues.mobile);
     console.log(data.Email.dataValues.email);
 
-    
-  });
-  res.render("contactus", { contactus:data});
+//show product on the product page
+router.get("/", (req, res) => {
+  res.render("index", { data: "hello" });
+});
+
+router.get("/products", (req, res) => {
+  res.render("index", { data: "hello" });
+});
+
+router.get("/services", (req, res) => {
+  res.render("services", { data: "hello" });
+});
+
+router.get("/contactus", (req, res) => {
+  res.render("contactus", { data: "hello" });
 });
 
 module.exports = router;
