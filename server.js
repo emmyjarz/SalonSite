@@ -41,7 +41,7 @@ var salon = require("./controllers/salon_controller")
 var customer = require("./controllers/customer_controller")
 var admin = require("./controllers/admin_controller")
 
-app.use("/salon", salon);
+app.use("/", salon);
 app.use("/customer", customer);
 app.use("/admin", admin);
 

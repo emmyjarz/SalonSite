@@ -13,16 +13,16 @@ router.get("/about", (req, res) => {
     ]
   }).then(function (data) {
     console.log(data);
-    console.log(data.dataValues.name);
-    console.log(data.dataValues.description);
-    console.log(data.Address.dataValues.address1);
-    console.log(data.Address.dataValues.city);
-    console.log(data.Address.dataValues.state);
-    console.log(data.Address.dataValues.zip);
-    console.log(data.Phone.dataValues.mobile);
-    console.log(data.Email.dataValues.email);
+    // console.log(data.dataValues.name);
+    // console.log(data.dataValues.description);
+    // console.log(data.Address.dataValues.address1);
+    // console.log(data.Address.dataValues.city);
+    // console.log(data.Address.dataValues.state);
+    // console.log(data.Address.dataValues.zip);
+    // console.log(data.Phone.dataValues.mobile);
+    // console.log(data.Email.dataValues.email);
 
-    res.render("index", { about: data });
+    res.render("about", { about: data });
 
   });
 });
