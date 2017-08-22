@@ -1,3 +1,4 @@
+USE salon_db;
 INSERT INTO services (name, duration, member_price, nonmember_price, cost, photo, comment, createdAt, updatedAt) VALUES ("Men's HC", "1hr", 70.00, 80.00, 30, "", "", now(), now());
 
 INSERT INTO services (name, duration, member_price, nonmember_price, cost, photo, comment, createdAt, updatedAt) VALUES ("Men's Clipper Cut", "1hr", 40.00, 50.00, 30, "", "", now(), now());
