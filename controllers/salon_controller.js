@@ -14,15 +14,15 @@ router.get("/about", (req, res) => {
     ]
   }).then(function (data) {
     // console.log(data);
-    console.log(data.dataValues.name);
-    console.log(data.dataValues.description);
-    console.log(data.Address.dataValues.address1);
-    console.log(data.Address.dataValues.address2);
-    console.log(data.Address.dataValues.city);
-    console.log(data.Address.dataValues.state);
-    console.log(data.Address.dataValues.zip);
-    console.log(data.Phone.dataValues.mobile);
-    console.log(data.Email.dataValues.email);
+    // console.log(data.dataValues.name);
+    // console.log(data.dataValues.description);
+    // console.log(data.Address.dataValues.address1);
+    // console.log(data.Address.dataValues.address2);
+    // console.log(data.Address.dataValues.city);
+    // console.log(data.Address.dataValues.state);
+    // console.log(data.Address.dataValues.zip);
+    // console.log(data.Phone.dataValues.mobile);
+    // console.log(data.Email.dataValues.email);
 
     res.render("about", { about: data });
 
@@ -39,15 +39,15 @@ router.get("/contactus", (req, res) => {
     ]
   }).then(function (data) {
     // console.log(data);
-    console.log(data.dataValues.name);
-    console.log(data.dataValues.description);
-    console.log(data.Address.dataValues.address1);
-    console.log(data.Address.dataValues.address2);
-    console.log(data.Address.dataValues.city);
-    console.log(data.Address.dataValues.state);
-    console.log(data.Address.dataValues.zip);
-    console.log(data.Phone.dataValues.mobile);
-    console.log(data.Email.dataValues.email);
+    // console.log(data.dataValues.name);
+    // console.log(data.dataValues.description);
+    // console.log(data.Address.dataValues.address1);
+    // console.log(data.Address.dataValues.address2);
+    // console.log(data.Address.dataValues.city);
+    // console.log(data.Address.dataValues.state);
+    // console.log(data.Address.dataValues.zip);
+    // console.log(data.Phone.dataValues.mobile);
+    // console.log(data.Email.dataValues.email);
     res.render("contactus", { contactus: data });
 
     });
