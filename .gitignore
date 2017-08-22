@@ -10,5 +10,7 @@ jspm_packages/
 # Config File
 config.json
 
-#Files containing API tokens
-twilio.js
+# .DS_Store
+.DS_Store
+
+

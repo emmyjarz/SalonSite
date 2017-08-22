@@ -1,38 +1,44 @@
 module.exports = function (sequelize, DataTypes) {
     var Service = sequelize.define("Service", {
         name: {
-
             type: DataTypes.STRING,
-            // allowNULL: false
+            allowNULL: false
         },
         duration: {
-
-            type: DataTypes.INTEGER,
-            // allowNULL: false
+            type: DataTypes.STRING,
+            allowNULL: true
         },
-        price: {
+        member_price: {
             type: DataTypes.DECIMAL(10, 2),
-            // allowNULL: false,
+            allowNULL: true,
+            validate: {
+                isDecimal: true
+            }
+        },
+        nonmember_price: {
+            type: DataTypes.DECIMAL(10, 2),
+            allowNULL: true,
             validate: {
                 isDecimal: true
             }
         },
         cost: {
             type: DataTypes.DECIMAL(10, 2),
-            // allowNULL: false,
+            allowNULL: true,
             validate: {
                 isDecimal: true
             }
         },
         photo: {
-            type: DataTypes.INTEGER,
-            
-           
-        }
+            type: DataTypes.STRING,
+        }, 
+        comment: {
+            type: DataTypes.TEXT,
+        }, 
     });
 
     Service.associate = (models) => {
-        Service.belongsToMany(models.Staff, {through: models.Staff_service});
+        Service.belongsToMany(models.Staff, { through: models.Staff_service });
     };
     return Service;
 };

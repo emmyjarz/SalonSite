@@ -1,73 +1,100 @@
 <div class="container">
 
 	<div class="row">
-   		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 salon-box">
+		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 salon-box">
 			<h2>Salon{{salon-name}}</h2>
-	 		<h4>address{{salon-addr}}</h4>
-	 		<h4>phone{{salon-ph}}</h4>
-	   		<h4><a href="{{salon-email}}">email</a></h4>
-	   	</div>	
-	   	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
-	   	&nbsp;
-    	</div>
-    	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
-    	&nbsp;
-    	</div>
-  	</div>
-  	<div class="row">
-    	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" id="map"></div>
-    	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 contact-box">
-    		<form action="" method="post">
-    			<div class="form-group">
-    				<div class="firstNameCont col-xs-6 col-sm-6 col-md-3 col-lg-3">
-    					<label for="firstNameContact" class="label-short">First Name:</label>
-    					<input type="text" class="input-short" id="firstNameContact">
-    				</div>
-    					<div class=" lastNameCont col-xs-6 col-sm-6 col-md-3 col-lg-3">
-    					<label for="lastNameContact" class="label-short">Last Name:</label>
-    					<input type="text" class="input-short" id="lastNameContact">
-    				</div>
-    			</div>
-    			<div class="form-group">
-    				<label for="phoneContact">Phone:</label>
-    				<input type="tel" class="form-control" id="phoneContact">
-  				</div>
-  				<div class="form-group">
-  					<label for="emailContact">Email address:</label>
-    				<input type="email" class="form-control" id="emailContact">
-  				</div>
-  				<div class="form-group">
-  					<label for="reasonContact">Choose one:</label>
-  					<select id="reasonContact" class="form-control">
+			<h4>address{{salon-addr}}</h4>
+			<h4>phone{{salon-ph}}</h4>
+			<h4><a href="{{salon-email}}">email</a></h4>
+		</div>	
+		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+			&nbsp;
+		</div>
+		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+			&nbsp;
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" id="map"></div>
+		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 contact-box">
+			<form action="" method="post">
+				<div class="form-group">
+					<div class="firstNameCont col-xs-6 col-sm-6 col-md-3 col-lg-3">
+						<label for="firstNameContact" class="label-short">First Name:</label>
+						<input type="text" class="input-short" id="firstNameContact">
+					</div>
+					<div class=" lastNameCont col-xs-6 col-sm-6 col-md-3 col-lg-3">
+						<label for="lastNameContact" class="label-short">Last Name:</label>
+						<input type="text" class="input-short" id="lastNameContact">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="phoneContact">Phone:</label>
+					<input type="tel" class="form-control" id="phoneContact">
+				</div>
+				<div class="form-group">
+					<label for="emailContact">Email address:</label>
+					<input type="email" class="form-control" id="emailContact">
+				</div>
+				<div class="form-group">
+					<label for="reasonContact">Choose one:</label>
+					<select id="reasonContact" class="form-control">
 						<option value="General Inquiry">Make me beautiful!</option>
 						<option value="Special Occasion Consultation">Can I get a special occasion consultation?</option>
 						<option value="Questions">I just have some questions.</option>	
 					</select>
-				<div class="form-group">
-					<textarea id="addlContact" class="form-control" rows="8" placeholder="Tell us more..."></textarea>	
-				</div>
-				<button type="submit" class="btn btn-default">Submit</button>
-			</form>	
+					<div class="form-group">
+						<textarea id="addlContact" class="form-control" rows="8" placeholder="Tell us more..."></textarea>	
+					</div>
+					<button type="submit" class="btn btn-default">Submit</button>
+				</form>	
+			</div>
 		</div>
-  	</div>
-</div>
+	</div>
 
-<script>
-    function initMap() {
-       var salon = {lat: 34.151417, lng: -118.453617};
-       var map = new google.maps.Map(document.getElementById('map'), {
-          	center: salon,
-          	zoom: 15
-        });
-        var marker = new google.maps.Marker({
-        	position: salon,
-        	map: map
-        });
-    }
+	<script>
+		function initMap() {
+			var salon = {lat: 34.151417, lng: -118.453617};
+			var map = new google.maps.Map(document.getElementById('map'), {
+				center: salon,
+				zoom: 15
+			});
+			var marker = new google.maps.Marker({
+				position: salon,
+				map: map
+			});
+		}
+
+		var twilio = require("twilio");
+
+var accountSid = 'ACbee7cda09d1d49514c2b47f0a2bbc5f2'; // Your Account SID from www.twilio.com/console
+var authToken = '9a5145f6e795c1911336d504e93eae4f';   // Your Auth Token from www.twilio.com/console
+
+var client = new twilio(accountSid, authToken);
+var leadName = $("#firstNameContact").val().trim() + " " + $("#lastNameContact").val().trim();
+var leadPhone = $("#phoneContact").val().trim();
+var leadEmail = $("#emailContact").val().trim();
+var leadInquiry = $("#reasonContact").val().trim();
+var leadAddl = $("#addlContact").val().trim();
+
+var textString = 
+`You have a new lead!
+Name: ${leadName}
+Phone: ${leadPhone}
+Email: ${leadEmail}
+Reason for contact: ${leadInquiry}
+Additional comments: ${leadAddl}`
+
+client.messages.create({
+	body: textString,
+    to: '+13236202056',  // Text this number
+    from: '+18182147591' // From a valid Twilio number
+})
+.then((message) => console.log(message.sid));
 
 </script>
 
 
 <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjc7C1wVVqG6qUwJTS3d55Nu4xxen1yJ4&callback=initMap">
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjc7C1wVVqG6qUwJTS3d55Nu4xxen1yJ4&callback=initMap">
 </script>
