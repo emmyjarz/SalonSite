@@ -25,6 +25,7 @@
     "method-override": "^2.3.9",
     "mysql": "^2.14.1",
     "mysql2": "^1.4.0",
-    "sequelize": "^4.4.10"
+    "sequelize": "^4.4.10",
+    "twilio": "^3.6.3"
   }
 }
