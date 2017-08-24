@@ -9,52 +9,70 @@
 
             <!-- Table -->
             <div style="height: 500px;overflow:auto;">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th><strong>Brand</strong></strong>
-                        </th>
-                        <th><strong>Name</strong></th>
-                        <th><strong>Size</strong></th>
-                        <th><strong>Price</strong></th>
-                        <th><strong>Quantity</strong></th>
-                        <th><strong>Cost</strong></th>
-                        <th><strong>Details/Edit</strong></th>
-                        <th><strong>Delete</strong></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {{!-- show products --}} {{#each products}}
-                    <tr>
-                        <td>{{this.brand}} </td>
-                        <td>{{this.name}}</td>
-                        <td>{{this.size}}</td>
-                        <td>${{this.price}}</td>
-                        <td>{{this.stock_quantity}}</td>
-                        <td>${{this.cost}}</td>
-                        {{!-- update --}}
-                        <td>
-                            <form action="/admin/products/{{this.id}}/edit" method="GET">
-                                <button type="submit" class="btn btn-info btn-sm"><i class="fa fa-info-circle" aria-hidden="true"> / Edit</i></button>
-                            </form>
-                        </td>
-                        {{!-- delete --}}
-                        <td>
-                            <form action="/admin/products/{{this.id}}?_method=DELETE" method="POST">
-                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
-                    {{/each}}
-                </tbody>
-            </table>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th><strong>Brand</strong></strong>
+                            </th>
+                            <th><strong>Name</strong></th>
+                            <th><strong>Size</strong></th>
+                            <th><strong>Price</strong></th>
+                            <th><strong>Quantity</strong></th>
+                            <th><strong>Cost</strong></th>
+                            <th><strong>Details</strong></th>
+                            <th><strong>Edit</strong></th>
+                            <th><strong>Delete</strong></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{!-- show products --}} {{#each products}}
+                        <tr>
+                            <td>{{this.brand}} </td>
+                            <td>{{this.name}}</td>
+                            <td>{{this.size}}</td>
+                            <td>${{this.price}}</td>
+                            <td>{{this.stock_quantity}}</td>
+                            <td>${{this.cost}}</td>
+                            <td><i data-toggle="modal" data-target=".bd-example-modal-sm{{@index}}" class="fa fa-info-circle"
+                                    aria-hidden="true"></td>
+                
+                            <div class="modal fade bd-example-modal-sm{{@index}}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-sm">
+                                    <div class="modal-content">
+                                        <p><strong>Brand:</strong> {{this.brand}}</p>
+                                        <p><strong>Name:</strong> {{this.name}}</p>
+                                        <p><strong>Description:</strong> {{this.description}}</p>
+                                        <p><strong>Size:</strong> {{this.size}}</p>
+                                        <p><strong>Price:</strong> ${{this.price}}</p></strong>
+                                        <p><strong>Stock Quantity:</strong> {{this.stock_quantity}}</p>
+                                        <p><strong>Cost:</strong> ${{this.cost}}</p>
+                                        <p><strong>Vendor:</strong> {{this.vendor}}</p>
+                                        <p><strong>Photo:</strong> {{this.photo}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            {{!-- update --}}
+                            <td>
+                                <form action="/admin/products/{{this.id}}/edit" method="GET">
+                                    <button type="submit" class="btn btn-info btn-sm">Edit</i></button>
+                                </form>
+                            </td>
+                            {{!-- delete --}}
+                            <td>
+                                <form action="/admin/products/{{this.id}}?_method=DELETE" method="POST">
+                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
             </div>
         </div>
         <!-- first card body -->
     </div>
     <!--first card -->
-    <br>
-    {{!-- Add new product --}}
+    <br> {{!-- Add new product --}}
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">Add Product</h3>
