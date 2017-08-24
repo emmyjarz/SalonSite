@@ -3,7 +3,7 @@
     <div class="card">
         <!-- Default card contents -->
         <div class="card-header">
-            <h4 class="card-title">Products</h4>
+            <h4 class="card-title">Services</h4>
         </div>
         <div class="card-block">
 
@@ -18,7 +18,8 @@
                             <th><strong>Member Price</strong></th>
                             <th><strong>Non Member Price</strong></th>
                             <th><strong>Cost</strong></th>
-                            <th><strong>Details/Edit</strong></th>
+                            <th><strong>Details</strong></th>
+                            <th><strong>Edit</strong></th>
                             <th><strong>Delete</strong></th>
                         </tr>
                     </thead>
@@ -30,7 +31,22 @@
                             <td>${{this.member_price}}</td>
                             <td>${{this.nonmember_price}}</td>
                             <td>${{this.cost}}</td>
-                      
+                            <td><i data-toggle="modal" data-target=".bd-example-modal-sm{{@index}}" class="fa fa-info-circle" aria-hidden="true"></td>
+                
+                            <div class="modal fade bd-example-modal-sm{{@index}}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-sm">
+                                    <div class="modal-content">
+                                        <p><strong>Name:</strong> {{this.name}}</p>
+                                        <p><strong>Duration:</strong> {{this.duration}}</p>
+                                        <p><strong>Member Price:</strong> {{this.member_price}}</p>
+                                        <p><strong>Non Member Price:</strong> {{this.nonmember_price}}</p>
+                                        
+                                        <p><strong>Cost:</strong> ${{this.cost}}</p>
+                                        <p><strong>Photo:</strong> {{this.photo}}</p>
+                                        <p><strong>Comment:</strong> {{this.comment}}</p>
+                                    </div>
+                                </div>
+                            </div>
                             {{!-- update --}}
                             <td>
                                 <form action="/admin/services/{{this.id}}/edit" method="GET">
