@@ -61,7 +61,6 @@ router.get("/contactus", (req, res) => {
 
 
 router.post("/leads", (req, res) => {
-  console.log("name: " + req.body.firstNameContact);
 var textString = `You have a new lead -
 Name: ${req.body.firstNameContact}
 Phone: ${req.body.phoneContact}
