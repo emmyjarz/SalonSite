@@ -1,15 +1,12 @@
 var express = require("express");
 var router = express.Router();
 var db = require("../models");
-<<<<<<< HEAD
+
 var Twilio = require('twilio');
-var config = require('../config');
+var config = require('../public/assets/js/config.js');
 var client = new Twilio(config.accountSid, config.authToken);
-
-
-=======
 const SALON_NAME = "Blvd6 Salon";
->>>>>>> database
+
 //display
 router.get("/about", (req, res) => {
   //show salon info on the about page
@@ -63,18 +60,18 @@ router.get("/contactus", (req, res) => {
 
 
 router.post("/leads", (req, res) => {
-  var textString = 
+var textString = 
 `You have a new lead -
 Name: ${req.body.firstNameContact}
 Phone: ${req.body.phoneContact}
 Email: ${req.body.emailContact}
-Reason for contact: ${reasonContact}
-Additional comments: ${addlContact}`
+Reason for contact: ${req.body.reasonContact}
+Additional comments: ${req.body.addlContact}`;
 
 client.messages.create({
     to: 'config.salonNumber',  // Text this number
-    from: 'config.twilioNumber' // From a valid Twilio number
-    body: textString,
+    from: 'config.twilioNumber', // From a valid Twilio number
+    body: textString
 })
 .then(() => {
           // Otherwise, respond with 200 OK
