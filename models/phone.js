@@ -2,13 +2,10 @@ module.exports = function (sequelize, DataTypes) {
     var Phone = sequelize.define("Phone", {
         mobile: {
             type: DataTypes.STRING,
-           
         },
         home: {
             type: DataTypes.STRING,
-            
         },
-
     });
 
     Phone.associate = function (models) {

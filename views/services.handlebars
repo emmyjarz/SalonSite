@@ -1,85 +1,36 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active"><a href="#HomeDiv" class="nav-link">Home</a></li>
-            <li class="nav-item"><a href="#AboutDiv" class="nav-link">About</a></li>
-            <li class="nav-item"><a href="#ServicesDiv" class="nav-link">Services</a></li>
-            <li class="nav-item"><a href="#ProductsDiv" class="nav-link">Products</a></li>
-            <li class="nav-item"><a href="#ContactDiv" class="nav-link">Contact Us</a></li>
-        </ul>
-    </div>
-</nav>
-<div id="ServicesDiv" class="full-content">
-    <p id="service-text">Full Brazilian Blow-Outs!</p>
+<div id="ServicesDiv" class="services-content">
+    <table class="table table-striped">
+        <tbody>
+            {{#each services}}
+            <tr>
+                <td style="width: 10%">
+                    <img src="../assets/images/bob3.jpg" alt="service photo" class="service-pic">
+                </td>
+                <td style="width: 15%; vertical-align: middle;">
+                                <strong>Member Price:</strong> {{member_price}}<br />
+                                <strong>Non-Member Price:</strong> {{nonmember_price}}
+                </td>
+                <td style="vertical-align: middle;">
+                    <h2>{{name}}</h2>
+                    <p>
+                                {{comment}}
+                        Execution dock hogshead fathom gangplank lugsail hornswaggle marooned no prey, no pay barque starboard pillage fire in the
+                        hole spike weigh anchor Buccaneer Cat o'nine tails landlubber or just lubber quarterdeck chantey
+                        doubloon jack squiffy deadlights killick bilge water mutiny grog blossom. Topmast parrel six pounders
+                        rum clipper nipper pinnace bring a spring upon her cable prow Arr no prey, no pay rutters blow the
+                        man down ye fathom yo-ho-ho gangway hempen halter clap of thunder crow's nest hulk doubloon Sink
+                        me smartly Plate Fleet tackle lateen sail. Man-of-war Sink me furl Spanish Main yo-ho-ho spike Jack
+                        Tar plunder black jack interloper come about sutler topgallant spyglass pink parrel hornswaggle reef
+                        Jack Ketch maroon bucko cable scuttle Gold Road Corsair snow Blimey.
+                    </p>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
 </div>
 <script>
-    let svcImgs = [
-        {
-            title: 'Blow Dry!', 
-            url: 'url("http://localhost:8080/assets/images/blowdry.jpg")'
-        }, 
-        {
-            title: 'Color!',
-            url: 'url("http://localhost:8080/assets/images/color2.jpg")',
-        },
-        {
-            title: 'Men\'s Haircut!',
-            url: 'url("http://localhost:8080/assets/images/MensHaircut.jpg")'
-        }, 
-        {
-            title: 'Full Brazilian Blow-Outs!',
-            url: 'url("http://localhost:8080/assets/images/stylists.jpg")'
-        },
-        {
-            title: 'Special Occassion Up-Do!',
-            url: 'url("http://localhost:8080/assets/images/updo.png")'
-        }
-    ];
-
-    $(document).ready(function () {
-        setInterval(changeService, 3000);
+    $(document).ready(function() {
+        $("#iServices").addClass("active");
     });
-
-    function changeService() {
-        let curImg = $("#service-text").html();
-        let curImgIdx = svcImgs.map(function (e) {
-            return e.title;
-        }).indexOf(curImg);
-
-        if (curImgIdx >= 0 && curImgIdx < svcImgs.length - 1) {
-            let newIdx = curImgIdx + 1;
-
-            $(".full-content").css("background", `no-repeat center/100% ${svcImgs[newIdx].url}`);
-            $("#service-text").html(svcImgs[newIdx].title);
-
-//text-shadow: 1px 1px 0 #b989bd;
-console.log("CI: ", svcImgs[newIdx].title);
-            switch (svcImgs[newIdx].title) {
-                case 'Men\'s Haircut!':
-                    $("#service-text").css("color", "#FFF").css("text-shadow", "1px 1px 0 #b989bd");
-                    break;
-                case 'Blow Dry!':
-                    $("#service-text").css("color", "#FFF").css("text-shadow", "1px 1px 0 #b989bd");
-                    break;
-                case 'Color!':
-                    $("#service-text").css("color", "#000").css("text-shadow", "2px 1px 0 #f9bdf0");
-                    break;
-                case 'Full Brazilian Blow-Outs!':
-                    $("#service-text").css("color", "#FFF").css("text-shadow", "2px 1px 0 #000");
-                    break;
-                case 'Special Occassion Up-Do!':
-                    $("#service-text").css("color", "#FFF").css("text-shadow", "2px 1px 0 #b989bd");
-                    break;
-                default:
-                    $("#service-text").css("color", "#FFF").css("text-shadow", "1px 1px 0 #b989bd");
-                    break;
-            }
-        } else {
-            $(".full-content").css("background", `no-repeat center/100% ${svcImgs[0].url}`);
-            $("#service-text").html(svcImgs[0].title);
-
-            curImgIdx = 0;
-        }
-    }
-
 </script>

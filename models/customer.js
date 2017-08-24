@@ -23,7 +23,7 @@ module.exports = function (sequelize, DataTypes) {
             }
         },
         lastvisit: {
-            type: DataTypes.STRING,
+            type: DataTypes.DATE,
         },
         photo: {
             type: DataTypes.STRING,

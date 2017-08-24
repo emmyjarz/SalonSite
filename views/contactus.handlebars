@@ -1,69 +1,72 @@
-<div class="container">
-
+<div class="container contact-content">
 	<div class="row">
-   		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 contact-box">
-			<h2>{{salon name}}</h2>
-	 		<h4>{{salon addr}}</h4>
-	 		<h4>{{salon ph}}</h4>
-	   		<h4><a href="{{salon email}}"></h4>
+   		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 salon-box">
+			<h2>{{contactus.dataValues.name}}</h2>
+	 		<span>{{contactus.Address.dataValues.address1}}</span><br />
+	 		<span>{{contactus.Address.dataValues.address2}}</span><br />
+			<span>{{contactus.Address.dataValues.city}}, </span>
+			<span>{{contactus.Address.dataValues.state}}</span>
+			<span>{{contactus.Address.dataValues.zip}}</span><br />
+	 		<span><strong>Phone:</strong> {{contactus.Phone.dataValues.mobile}}</span><br />
+	   		<span><strong>Email:</strong> <a href="mailto:{{contactus.Email.dataValues.email}}?subject=Inquiry from www.blvd6.com">{{contactus.Email.dataValues.email}}</a></span>
+	   	</div>	
 	   	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+	   	&nbsp;
     	</div>
     	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+    	&nbsp;
     	</div>
   	</div>
   	<div class="row">
-    	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 map-box"></div>
+    	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" id="map"></div>
     	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 contact-box">
     		<form action="" method="post">
     			<div class="form-group">
-    				<label for="firstNameContact" class="label-short col-xs-6 col-sm-6 col-md-3 col-lg-3">First Name</label>
-    				<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
-    					<input type="text" class="input-short" id="firstNameContact">
-    				</div>
-    				<label for="lastNameContact" class="label-short col-xs-6 col-sm-6 col-md-3 col-lg-3">Last Name</label>
-    				<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
-    					<input type="text" class="input-short" id="lastNameContact">
-    				</div>
+					<div class="row">
+						<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 firstNameCont">
+							<label for="firstNameContact" class="label-short">First Name:</label>
+							<input type="text" class="input-short" id="firstNameContact">
+						</div>
+						<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 lastNameCont">
+							<label for="lastNameContact" class="label-short">Last Name:</label>
+							<input type="text" class="input-short" id="lastNameContact">
+						</div>
+					</div>
     			</div>
     			<div class="form-group">
-    				<label for="phoneContact">Phone</label>
+    				<label for="phoneContact" class="label-short">Phone:</label>
     				<input type="tel" class="form-control" id="phoneContact">
   				</div>
   				<div class="form-group">
-  					<label for="emailAddress">Email address</label>
-    				<input type="email" class="form-control" id="emailAddress">
+  					<label for="emailContact" class="label-short">Email address:</label>
+    				<input type="email" class="form-control" id="emailContact">
   				</div>
   				<div class="form-group">
-  					<select class="form-control">
-  						<label for="reasonContact">Choose one or more</label>
-						<option class="reasonContact">Make me beautiful!</option>
-						  <optionclass="reasonContact">I'd like a special occasion consultation</option>
-						  <optionclass="reasonContact">I have some questions</option>	
+  					<label for="reasonContact" class="label-short">Choose one:</label>
+  					<select id="reasonContact" class="form-control">
+						<option value="General Inquiry">Make me beautiful!</option>
+						<option value="Special Occasion Consultation">Can I get a special occasion consultation?</option>
+						<option value="Questions">I just have some questions.</option>	
 					</select>
-				<div class="form-group">
-					<textarea class="form-control" rows="8" placeholder="Tell us more..."></textarea>	
-				</div>
-				<button type="submit" class="btn btn-default">Submit</button>
-			</form>	
+					<div class="form-group">
+						<textarea id="addlContact" name="addlContact" class="form-control" rows="8" placeholder="Tell us more..."></textarea>	
+					</div>
+					<button type="submit" id="submitContact" class="btn btn-default">Submit</button>
+				</form>	
+			</div>
 		</div>
-  	</div>
-</div>
-
-<script>
-    function initMap() {
-       var salon = {lat: 34.151417, lng: -118.453617};
-       var map = new google.maps.Map(document.getElementById('map'), {
-          	center: salon,
-          	zoom: 15
-        });
-        var marker = new google.maps.Marker({
-        	position: salon,
-        	map: map
-        });	
-    }
+	</div>
+	<script>
+		function initMap() {
+			var salon = {lat: 34.151417, lng: -118.453617};
+			var map = new google.maps.Map(document.getElementById('map'), {
+				center: salon,
+				zoom: 15
+			});
+			var marker = new google.maps.Marker({
+				position: salon,
+				map: map
+			});
+		}
 </script>
-
-
-<script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJing0S_ayqBsEh2LqCfwCj1TvVwuX9Iw&callback=initMap">
-</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjc7C1wVVqG6qUwJTS3d55Nu4xxen1yJ4&callback=initMap"></script>

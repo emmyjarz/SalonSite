@@ -1,0 +1,51 @@
+<div class="container products-content">
+    <div id="ProductBrandsDiv" class="row text-center">
+        {{#each productBrands}}
+            <div class="col-lg-6 prod-row">
+                {{!-- <button type="button" id="btnSubmit" onclick="sayHelloToMyLittleFriend('{{brand}}');" data-toggle="modal" data-target=".bd-example-modal-sm-{{brand}}" aria-hidden="true" data-value="{{brand}}">{{brand}}</button> --}}
+                <img data-toggle="modal" data-target=".bd-example-modal-lg-{{id}}" aria-hidden="true" src="{{photo}}" alt="{{brand}}"
+                    data-value="{{brand}}" class="brand-pic" onclick="sayHelloToMyLittleFriend('{{brand}}');">
+            </div>
+            <div class="modal fade bd-example-modal-lg-{{id}}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</div>
+<script>
+    $(document).ready(function() {
+        $("#iServices").addClass("active");
+    });
+    
+    function sayHelloToMyLittleFriend(prod) {
+        let divs = "";
+
+        jQuery.get("/products/" + prod, function(data) {
+            let idx = "";
+
+            $.each(data.products, function(index, value) {
+                if (index % 2 !== 0) {
+                    idx = "odds";
+                } else {
+                    idx = "evens";
+                }
+
+                divs += `<div class="row prod-row ${idx}">
+                        <div class="col-lg-6">
+                            <img src="${data.products[index].photo}" alt="${data.products[index].name}" class="product-pic">
+                        </div>
+                        <div class="col-lg-6">
+                            <strong>Name: </strong>${data.products[index].name}<br />
+                            <strong>Price: </strong>$${data.products[index].price}<br />
+                            <strong>Description: </strong>${data.products[index].description}
+                        </div>
+                    </div>`;
+            });
+
+            $(".modal-content").html(divs);
+        });
+    }
+</script>
