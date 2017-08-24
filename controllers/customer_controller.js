@@ -11,7 +11,7 @@ router.post("/new", (req, res) => {
     var addressId;
     var phoneId;
     db.Email.create({
-        email: "tes@gemai.com"
+        email:req.body.email
     }).then((newEmail) => {
         emailId = newEmail.id;
         return db.Address.create({
@@ -19,17 +19,14 @@ router.post("/new", (req, res) => {
             address2: "req.body.address2",
             city: "req.body.city",
             state: "req.body.state",
-            zip:11111
-            //  req.body.zip
+            zip:req.body.zip
         });
 
     }).then((newAddress) => {
         addressId = newAddress.id;
         return db.Phone.create({
-            mobile: "7777777777",
-            // req.body.mobile,
-            home: "7777777777"
-            // "req.body.home"
+            mobile: req.body.mobile,
+            home: req.body.home
         });
     }).then((newPhone) => {
         phoneId = newPhone.id;
@@ -38,14 +35,14 @@ router.post("/new", (req, res) => {
         'address:', addressId,
         'phone:', phoneId)
         return db.Customer.create({
-            name: "req.body.name",
-            lastname: "req.body.lastname",
-            password: "req.body.password",
-            gender: "req.body.gender",
-            balance: 21.22,
+            name: req.body.name,
+            lastname: req.body.lastname,
+            password: req.body.password,
+            gender: req.body.gender,
+            balance: req.body.balance,
             lastvisit: new Date(),
-            photo: "req.body.photo",
-            comment: "req.body.comment",
+            photo: req.body.photo,
+            comment: req.body.comment,
             EmailId: emailId,
             AddressId: addressId,
             PhoneId: phoneId

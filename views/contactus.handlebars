@@ -2,10 +2,14 @@
 
 	<div class="row">
    		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 salon-box">
-			<h2>Salon{{salon-name}}</h2>
-	 		<h4>address{{salon-addr}}</h4>
-	 		<h4>phone{{salon-ph}}</h4>
-	   		<h4><a href="{{salon-email}}">email</a></h4>
+			<h2>{{contactus.dataValues.name}}</h2>
+	 		<span>{{contactus.Address.dataValues.address1}}</span><br>
+	 		<span>{{contactus.Address.dataValues.address2}}</span>
+			 <span>{{contactus.Address.dataValues.city}}, </span>
+			 <span>{{contactus.Address.dataValues.state}}</span>
+			 <span>{{contactus.Address.dataValues.zip}}</span>
+	 		<h6>{{contactus.Phone.dataValues.mobile}}</h6>
+	   		<h6>{{contactus.Email.dataValues.email}}</h6>
 	   	</div>	
 	   	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
 	   	&nbsp;
