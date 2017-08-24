@@ -3,13 +3,15 @@ var router = express.Router();
 var db = require("../models");
 const SALON_NAME = "Blvd6 Salon";
 // show all product
-router.get("/product", (req, res) => {
-    db.Product.findAll().then(data => {
-        res.render("adminProduct", { product: data });
+router.get("/products", (req, res) => {
+    db.Product.findAll({
+        order:[["brand", "ASC"]]
+    }).then(data => {
+        res.render("adminProducts", { products: data });
     });
 });
 //add product in database
-router.post("/product/new", (req, res) => {
+router.post("/products/new", (req, res) => {
     // console.log(req.body)
     db.Product.create(
         {
@@ -24,46 +26,47 @@ router.post("/product/new", (req, res) => {
             photo: req.body.photo
         }
     ).then(data => {
-        res.redirect("/admin/product")
+        res.redirect("/admin/products")
     });
 });
 //edit product - show update product
-router.get("/product/:id/edit", (req, res) => {
+router.get("/products/:id/edit", (req, res) => {
     console.log(req.params.id)
     db.Product.findOne({
         where: {
             id: req.params.id
         }
     }).then(data => {
-        res.render("adminProduct", { editproduct: data })
+        res.render("adminProductsEdit", { editproduct: data })
     });
 });
 //update - update database
-router.put("/product/:id", (req, res) => {
+router.put("/products/:id", (req, res) => {
     db.Product.update(req.body, {
         where: {
             id: req.params.id
         }
     }).then(data => {
-        res.redirect("/admin/product")
+        res.redirect("/admin/products")
     }
 )
 })
 //delete product in database
-router.delete("/product/:id", (req, res) => {
+router.delete("/products/:id", (req, res) => {
     // console.log(req.params.id);
     db.Product.destroy({
         where: {
             id: req.params.id
         }
     }).then(data => {
-        res.redirect("/admin/product")
+        res.redirect("/admin/products")
     });
 });
 
 //service
 router.get("/services", (req, res) => {
     db.Service.findAll().then(data => {
+        console.log(data);
         res.render("adminservices", { services: data });
     });
 });
@@ -81,6 +84,7 @@ router.post("/services/new", (req, res) => {
             comment: req.body.comment,
         }
     ).then(data => {
+        console.log(data);
         res.redirect("/admin/services")
     });
 });
@@ -92,7 +96,8 @@ router.get("/services/:id/edit", (req, res) => {
             id: req.params.id
         }
     }).then(data => {
-        res.render("adminServices", { editservices: data })
+        console.log(data);
+        res.render("adminServicesEdit", { editservice: data })
     });
 });
 //update - update database
@@ -102,17 +107,19 @@ router.put("/services/:id", (req, res) => {
             id: req.params.id
         }
     }).then(data => {
+        console.log(data);
         res.redirect("/admin/services")
     })
 })
 //delete service in database
 router.delete("/services/:id", (req, res) => {
     // console.log(req.params.id);
-    db.Product.destroy({
+    db.Service.destroy({
         where: {
             id: req.params.id
         }
     }).then(data => {
+        console.log(data);
         res.redirect("/admin/services")
     });
 });
@@ -164,42 +171,39 @@ router.post("/staff/new", (req, res) => {
     var addressId;
     var phoneId;
     db.Email.create({
-        email: "tes@gemai.com"
+        email: req.body.email
     }).then((newEmail) => {
         emailId = newEmail.id;
         return db.Address.create({
-            address1: "req.body.address1",
-            address2: "req.body.address2",
-            city: "req.body.city",
-            state: "req.body.state",
-            zip: 11111
-            //  req.body.zip
+            address1: req.body.address1,
+            address2: req.body.address2,
+            city: req.body.city,
+            state: req.body.state,
+            zip: req.body.zip
         });
 
     }).then((newAddress) => {
         addressId = newAddress.id;
         return db.Phone.create({
-            mobile: "7777777777",
-            // req.body.mobile,
-            home: "7777777777"
-            // "req.body.home"
+            mobile: req.body.mobile,
+            home: req.body.home
         });
     }).then((newPhone) => {
         phoneId = newPhone.id;
 
-        console.log('adding new customer', 'email:', emailId,
-            'address:', addressId,
-            'phone:', phoneId)
+        // console.log('adding new customer', 'email:', emailId,
+        //     'address:', addressId,
+        //     'phone:', phoneId)
         return db.Staff.create({
-            name: "req.body.name",
-            lastname: "req.body.lastname",
-            bio: "req.body.bio",
-            station: "req.body.station",
-            day: "req.body.day",
-            hour: "req.body.hour",
-            emergency_contact_name: "req.body.emergency_contact_name",
-            emergency_contact_phone: "req.body.emergency_contact_phone",
-            comment: "req.body.comment",
+            name: req.body.name,
+            lastname: req.body.lastname,
+            bio: req.body.bio,
+            station: req.body.station,
+            day: req.body.day,
+            hour: req.body.hour,
+            emergency_contact_name: req.body.emergency_contact_name,
+            emergency_contact_phone: req.body.emergency_contact_phone,
+            comment: req.body.comment,
             EmailId: emailId,
             AddressId: addressId,
             PhoneId: phoneId
@@ -228,7 +232,7 @@ router.get("/staff/:id/edit", (req, res) => {
     });
 });
 //update - update database
-router.put("/Staff/:id", (req, res) => {
+router.put("/staff/:id", (req, res) => {
     db.Staff.update(req.body, {
         where: {
             id: req.params.id
@@ -238,7 +242,7 @@ router.put("/Staff/:id", (req, res) => {
     });
 })
 //delete staff in database
-router.delete("/Staff/:id", (req, res) => {
+router.delete("/staff/:id", (req, res) => {
     // console.log(req.params.id);
     db.Staff.destroy({
         where: {
@@ -246,6 +250,108 @@ router.delete("/Staff/:id", (req, res) => {
         }
     }).then(data => {
         res.redirect("/admin/staff")
+    });
+});
+
+
+
+
+//manage customer
+// show all customer
+router.get("/customers", (req, res) => {
+    db.Customer.findAll({
+        include: [db.Address
+            , db.Email, db.Phone
+        ]
+    }).then(data => {
+        // console.log(data)
+        res.render("adminCustomers", { Customers: data });
+    });
+});
+//add customer in database
+router.post("/customers/new", (req, res) => {
+    var emailId;
+    var addressId;
+    var phoneId;
+    db.Email.create({
+        email: req.body.email
+    }).then((newEmail) => {
+        emailId = newEmail.id;
+        return db.Address.create({
+            address1: req.body.address1,
+            address2: req.body.address2,
+            city: req.body.city,
+            state: req.body.state,
+            zip: req.body.zip
+        });
+
+    }).then((newAddress) => {
+        addressId = newAddress.id;
+        return db.Phone.create({
+            mobile: req.body.mobile,
+            home: req.body.home
+        });
+    }).then((newPhone) => {
+        phoneId = newPhone.id;
+
+        // console.log('adding new customer', 'email:', emailId,
+        //     'address:', addressId,
+        //     'phone:', phoneId)
+        return db.Customer.create({
+            name: req.body.name,
+            lastname: req.body.lastname,
+            password: req.body.password,
+            gender: req.body.gender,
+            balance: req.body.balance,
+            lastvisit: req.body.lastvisit,
+            photo: req.body.photo,
+            comment: req.body.comment,
+            EmailId: emailId,
+            AddressId: addressId,
+            PhoneId: phoneId
+        }, {
+                include: [db.Address
+                    , db.Email, db.Phone
+                ]
+            });
+    }).then(data => {
+        res.redirect("/admin/customers")
+        // console.log(data);
+        // res.json(data)
+    }).catch((error) => {
+        res.json(error);
+    });
+});
+//edit customers - show update product
+router.get("/customers/:id/edit", (req, res) => {
+    console.log(req.params.id)
+    db.Customer.findOne({
+        where: {
+            id: req.params.id
+        }
+    }).then(data => {
+        res.render("adminCustomers", { editCustomer: data })
+    });
+});
+//update - update database
+router.put("/customers/:id", (req, res) => {
+    db.Customer.update(req.body, {
+        where: {
+            id: req.params.id
+        }
+    }).then(data => {
+        res.redirect("/admin/customers")
+    });
+})
+//delete staff in database
+router.delete("/customers/:id", (req, res) => {
+    // console.log(req.params.id);
+    db.Customer.destroy({
+        where: {
+            id: req.params.id
+        }
+    }).then(data => {
+        res.redirect("/admin/customers")
     });
 });
 
