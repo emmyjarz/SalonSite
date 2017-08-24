@@ -1,44 +1,48 @@
 <div class="container">
 
 	<div class="row">
-		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 salon-box">
-			<h2>Salon{{salon-name}}</h2>
-			<h4>address{{salon-addr}}</h4>
-			<h4>phone{{salon-ph}}</h4>
-			<h4><a href="{{salon-email}}">email</a></h4>
-		</div>	
-		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
-			&nbsp;
-		</div>
-		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
-			&nbsp;
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" id="map"></div>
-		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 contact-box">
-			<form action='/leads', method='POST'>
-				<div class="form-group">
-					<div class="firstNameCont col-xs-6 col-sm-6 col-md-3 col-lg-3">
-						<label for="firstNameContact" class="label-short">First Name:</label>
-						<input type="text" class="input-short" id="firstNameContact" name="firstNameContact">
-					</div>
-					<div class=" lastNameCont col-xs-6 col-sm-6 col-md-3 col-lg-3">
-						<label for="lastNameContact" class="label-short">Last Name:</label>
-						<input type="text" class="input-short" id="lastNameContact" name="lastNameContact">
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="phoneContact">Phone:</label>
-					<input type="tel" class="form-control" id="phoneContact" name="phoneContact">
-				</div>
-				<div class="form-group">
-					<label for="emailContact">Email address:</label>
-					<input type="email" class="form-control" id="emailContact" name="emailContact">
-				</div>
-				<div class="form-group">
-					<label for="reasonContact">Choose one:</label>
-					<select id="reasonContact" name="reasonContact" class="form-control">
+   		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 salon-box">
+			<h2>{{contactus.dataValues.name}}</h2>
+	 		<span>{{contactus.Address.dataValues.address1}}</span><br>
+	 		<span>{{contactus.Address.dataValues.address2}}</span>
+			 <span>{{contactus.Address.dataValues.city}}, </span>
+			 <span>{{contactus.Address.dataValues.state}}</span>
+			 <span>{{contactus.Address.dataValues.zip}}</span>
+	 		<h6>{{contactus.Phone.dataValues.mobile}}</h6>
+	   		<h6>{{contactus.Email.dataValues.email}}</h6>
+	   	</div>	
+	   	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+	   	&nbsp;
+    	</div>
+    	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+    	&nbsp;
+    	</div>
+  	</div>
+  	<div class="row">
+    	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" id="map"></div>
+    	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 contact-box">
+    		<form action="" method="post">
+    			<div class="form-group">
+    				<div class="firstNameCont col-xs-6 col-sm-6 col-md-3 col-lg-3">
+    					<label for="firstNameContact" class="label-short">First Name:</label>
+    					<input type="text" class="input-short" id="firstNameContact">
+    				</div>
+    					<div class=" lastNameCont col-xs-6 col-sm-6 col-md-3 col-lg-3">
+    					<label for="lastNameContact" class="label-short">Last Name:</label>
+    					<input type="text" class="input-short" id="lastNameContact">
+    				</div>
+    			</div>
+    			<div class="form-group">
+    				<label for="phoneContact">Phone:</label>
+    				<input type="tel" class="form-control" id="phoneContact">
+  				</div>
+  				<div class="form-group">
+  					<label for="emailContact">Email address:</label>
+    				<input type="email" class="form-control" id="emailContact">
+  				</div>
+  				<div class="form-group">
+  					<label for="reasonContact">Choose one:</label>
+  					<select id="reasonContact" class="form-control">
 						<option value="General Inquiry">Make me beautiful!</option>
 						<option value="Special Occasion Consultation">Can I get a special occasion consultation?</option>
 						<option value="Questions">I just have some questions.</option>	

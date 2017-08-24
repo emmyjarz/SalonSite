@@ -44,7 +44,7 @@ router.get("/contactus", (req, res) => {
       , db.Email, db.Phone
     ]
   }).then( data=> {
-    // console.log(data);
+    console.log(data);
     // console.log(data.dataValues.name);
     // console.log(data.dataValues.description);
     // console.log(data.Address.dataValues.address1);
