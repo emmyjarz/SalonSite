@@ -56,10 +56,10 @@ router.get("/contactus", (req, res) => {
 //show product brand on the product page
 router.get("/products", (req, res) => {
   db.Product.findAll({
-    attributes:["brand"],
+    attributes:["brand","photo"],
     group:"brand"
   }).then(data =>{
-    // console.log(data);
+    console.log(data);
     
     //  console.log(data[0].dataValues.brand);
     res.render("products", { productBrands: data });
