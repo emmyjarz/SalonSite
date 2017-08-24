@@ -21,30 +21,30 @@
 				<div class="form-group">
 					<div class="firstNameCont col-xs-6 col-sm-6 col-md-3 col-lg-3">
 						<label for="firstNameContact" class="label-short">First Name:</label>
-						<input type="text" class="input-short" id="firstNameContact">
+						<input type="text" class="input-short" id="firstNameContact" name="firstNameContact">
 					</div>
 					<div class=" lastNameCont col-xs-6 col-sm-6 col-md-3 col-lg-3">
 						<label for="lastNameContact" class="label-short">Last Name:</label>
-						<input type="text" class="input-short" id="lastNameContact">
+						<input type="text" class="input-short" id="lastNameContact" name="lastNameContact">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="phoneContact">Phone:</label>
-					<input type="tel" class="form-control" id="phoneContact">
+					<input type="tel" class="form-control" id="phoneContact" name="phoneContact">
 				</div>
 				<div class="form-group">
 					<label for="emailContact">Email address:</label>
-					<input type="email" class="form-control" id="emailContact">
+					<input type="email" class="form-control" id="emailContact" name="emailContact">
 				</div>
 				<div class="form-group">
 					<label for="reasonContact">Choose one:</label>
-					<select id="reasonContact" class="form-control">
+					<select id="reasonContact" name="reasonContact" class="form-control">
 						<option value="General Inquiry">Make me beautiful!</option>
 						<option value="Special Occasion Consultation">Can I get a special occasion consultation?</option>
 						<option value="Questions">I just have some questions.</option>	
 					</select>
 					<div class="form-group">
-						<textarea id="addlContact" class="form-control" rows="8" placeholder="Tell us more..."></textarea>	
+						<textarea id="addlContact" name="addlContact" class="form-control" rows="8" placeholder="Tell us more..."></textarea>	
 					</div>
 					<button type="submit" id="submitContact" class="btn btn-default">Submit</button>
 				</form>	
@@ -64,38 +64,6 @@
 				map: map
 			});
 		}
-
-		
-
-var accountSid = 'ACbee7cda09d1d49514c2b47f0a2bbc5f2'; // Your Account SID from www.twilio.com/console
-var authToken = '9a5145f6e795c1911336d504e93eae4f';   // Your Auth Token from www.twilio.com/console
-const client = require('twilio')(accountSid, authToken);
-
-$("#submitContact").on("click", function(e) {
-e.preventDefault();
-/*var client = new twilio(accountSid, authToken);
-var leadName = $("#firstNameContact").val().trim() + " " + $("#lastNameContact").val().trim();
-var leadPhone = $("#phoneContact").val().trim();
-var leadEmail = $("#emailContact").val().trim();
-var leadInquiry = $("#reasonContact").val().trim();
-var leadAddl = $("#addlContact").val().trim();
-
-var textString = 
-`You have a new lead -
-Name: ${req.body.firstNameContact}
-Phone: ${req.body.phoneContact}
-Email: ${req.body.emailContact}
-Reason for contact: ${reasonContact}
-Additional comments: ${addlContact}`
-
-client.messages.create({
-	body: textString,
-    to: 'config.salonNumber',  // Text this number
-    from: 'config.twilioNumber' // From a valid Twilio number
-})
-.then((message) => console.log(message.sid));*/
-});
-
 </script>
 
 

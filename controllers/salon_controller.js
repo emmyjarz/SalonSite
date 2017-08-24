@@ -3,8 +3,9 @@ var router = express.Router();
 var db = require("../models");
 
 var Twilio = require('twilio');
-var config = require('../public/assets/js/config.js');
-var client = new Twilio(config.accountSid, config.authToken);
+var Tconfig = require('../config/js/config.js');
+console.log(Tconfig);
+var client = new Twilio(Tconfig.accountSid, Tconfig.authToken);
 const SALON_NAME = "Blvd6 Salon";
 
 //display
@@ -60,8 +61,7 @@ router.get("/contactus", (req, res) => {
 
 
 router.post("/leads", (req, res) => {
-var textString = 
-`You have a new lead -
+var textString = `You have a new lead -
 Name: ${req.body.firstNameContact}
 Phone: ${req.body.phoneContact}
 Email: ${req.body.emailContact}
@@ -69,17 +69,18 @@ Reason for contact: ${req.body.reasonContact}
 Additional comments: ${req.body.addlContact}`;
 
 client.messages.create({
-    to: 'config.salonNumber',  // Text this number
-    from: 'config.twilioNumber', // From a valid Twilio number
+    to: Tconfig.salonNumber,  // Text this number
+    from: Tconfig.twilioNumber, // From a valid Twilio number
     body: textString
 })
 .then(() => {
           // Otherwise, respond with 200 OK
-          response.status(200).send('Lead notification was successfully sent.');
+          //res.status(200).send('Lead notification was successfully sent.');
+          res.redirect("/contactus");
         })
         .catch((err) => {
           console.error(err);
-          response.status(500).send();
+          res.status(500).send();
         })
     });
 
