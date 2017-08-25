@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
@@ -9,6 +10,8 @@
         </ul>
     </div>
 </nav>
+=======
+>>>>>>> Front-End
 <div id="ServicesDiv" class="full-content">
     <p id="service-text">Full Brazilian Blow-Outs!</p>
 </div>
@@ -32,12 +35,21 @@
         },
         {
             title: 'Special Occassion Up-Do!',
+<<<<<<< HEAD
             url: 'url("http://localhost:8080/assets/images/updo.jpg")'
+=======
+            url: 'url("http://localhost:8080/assets/images/updo.png")'
+>>>>>>> Front-End
         }
     ];
 
     $(document).ready(function () {
         setInterval(changeService, 3000);
+<<<<<<< HEAD
+=======
+
+        $("#iHome").addClass("active");
+>>>>>>> Front-End
     });
 
     function changeService() {
@@ -51,6 +63,30 @@
 
             $(".full-content").css("background", `no-repeat center/100% ${svcImgs[newIdx].url}`);
             $("#service-text").html(svcImgs[newIdx].title);
+<<<<<<< HEAD
+=======
+			
+            switch (svcImgs[newIdx].title) {
+                case 'Men\'s Haircut!':
+                    $("#service-text").css("color", "#FFF").css("text-shadow", "1px 1px 0 #b989bd");
+                    break;
+                case 'Blow Dry!':
+                    $("#service-text").css("color", "#FFF").css("text-shadow", "1px 1px 0 #b989bd");
+                    break;
+                case 'Color!':
+                    $("#service-text").css("color", "#000").css("text-shadow", "2px 1px 0 #f9bdf0");
+                    break;
+                case 'Full Brazilian Blow-Outs!':
+                    $("#service-text").css("color", "#FFF").css("text-shadow", "2px 1px 0 #000");
+                    break;
+                case 'Special Occassion Up-Do!':
+                    $("#service-text").css("color", "#FFF").css("text-shadow", "2px 1px 0 #b989bd");
+                    break;
+                default:
+                    $("#service-text").css("color", "#FFF").css("text-shadow", "1px 1px 0 #b989bd");
+                    break;
+            }
+>>>>>>> Front-End
         } else {
             $(".full-content").css("background", `no-repeat center/100% ${svcImgs[0].url}`);
             $("#service-text").html(svcImgs[0].title);
@@ -58,5 +94,8 @@
             curImgIdx = 0;
         }
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> Front-End
 </script>

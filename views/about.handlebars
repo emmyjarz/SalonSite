@@ -1,23 +1,3 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <a class="navbar-brand" href="#"><img id="nav-logo" src="../assets/images/Blvd6Logo.png" alt="Blvd 6 Logo"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
-        aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item"><a href="#HomeDiv" class="nav-link">Home</a></li>
-            <li class="nav-item active"><a href="#AboutDiv" class="nav-link">About</a></li>
-            <li class="nav-item"><a href="#ServicesDiv" class="nav-link">Services</a></li>
-            <li class="nav-item"><a href="#ProductsDiv" class="nav-link">Products</a></li>
-            <li class="nav-item"><a href="#ContactDiv" class="nav-link">Contact Us</a></li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-    </div>
-</nav>
 <div class="jumbotron">
     <div class="container">
         <h1 class="display-3 about-us">About Us!</h1>
@@ -52,19 +32,20 @@
     <div class="row text-center">
         <div class="col-md-6">
             <h4>
-                <img class="profile-pic" src="../assets/images/traci.jpg" alt="Traci Crouch"><br /> Traci Crouch
+                <img class="profile-pic" src="../assets/images/traci.jpg" alt="Jaime"><br /> Jaime
             </h4>
         </div>
         <div class="col-md-6">
             <h4>
-                <img class="profile-pic" src="../assets/images/tatiana.jpg" alt="Tatiana Rodas"><br /> Tatiana Rodas
+                <img class="profile-pic" src="../assets/images/tatiana.jpg" alt="Tatiana"><br /> Tatiana
             </h4>
         </div>
     </div>
 
     <hr>
-    <footer>
-        <p>&copy; Blvd 6 Salon 2017</p>
-    </footer>
 </div>
-<!-- /container -->
+<script>
+    $(document).ready(function() {
+        $("#iAbout").addClass("active");
+    });
+</script>

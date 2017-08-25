@@ -1,15 +1,14 @@
-<div class="container">
-
+<div class="container contact-content">
 	<div class="row">
    		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 salon-box">
 			<h2>{{contactus.dataValues.name}}</h2>
-	 		<span>{{contactus.Address.dataValues.address1}}</span><br>
-	 		<span>{{contactus.Address.dataValues.address2}}</span>
-			 <span>{{contactus.Address.dataValues.city}}, </span>
-			 <span>{{contactus.Address.dataValues.state}}</span>
-			 <span>{{contactus.Address.dataValues.zip}}</span>
-	 		<h6>{{contactus.Phone.dataValues.mobile}}</h6>
-	   		<h6>{{contactus.Email.dataValues.email}}</h6>
+	 		<span>{{contactus.Address.dataValues.address1}}</span><br />
+	 		<span>{{contactus.Address.dataValues.address2}}</span><br />
+			<span>{{contactus.Address.dataValues.city}}, </span>
+			<span>{{contactus.Address.dataValues.state}}</span>
+			<span>{{contactus.Address.dataValues.zip}}</span><br />
+	 		<span><strong>Phone:</strong> {{contactus.Phone.dataValues.mobile}}</span><br />
+	   		<span><strong>Email:</strong> <a href="mailto:{{contactus.Email.dataValues.email}}?subject=Inquiry from www.blvd6.com">{{contactus.Email.dataValues.email}}</a></span>
 	   	</div>	
 	   	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
 	   	&nbsp;
@@ -23,25 +22,27 @@
     	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 contact-box">
     		<form action="" method="post">
     			<div class="form-group">
-    				<div class="firstNameCont col-xs-6 col-sm-6 col-md-3 col-lg-3">
-    					<label for="firstNameContact" class="label-short">First Name:</label>
-    					<input type="text" class="input-short" id="firstNameContact">
-    				</div>
-    					<div class=" lastNameCont col-xs-6 col-sm-6 col-md-3 col-lg-3">
-    					<label for="lastNameContact" class="label-short">Last Name:</label>
-    					<input type="text" class="input-short" id="lastNameContact">
-    				</div>
+					<div class="row">
+						<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 firstNameCont">
+							<label for="firstNameContact" class="label-short">First Name:</label>
+							<input type="text" class="input-short" id="firstNameContact">
+						</div>
+						<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 lastNameCont">
+							<label for="lastNameContact" class="label-short">Last Name:</label>
+							<input type="text" class="input-short" id="lastNameContact">
+						</div>
+					</div>
     			</div>
     			<div class="form-group">
-    				<label for="phoneContact">Phone:</label>
+    				<label for="phoneContact" class="label-short">Phone:</label>
     				<input type="tel" class="form-control" id="phoneContact">
   				</div>
   				<div class="form-group">
-  					<label for="emailContact">Email address:</label>
+  					<label for="emailContact" class="label-short">Email address:</label>
     				<input type="email" class="form-control" id="emailContact">
   				</div>
   				<div class="form-group">
-  					<label for="reasonContact">Choose one:</label>
+  					<label for="reasonContact" class="label-short">Choose one:</label>
   					<select id="reasonContact" class="form-control">
 						<option value="General Inquiry">Make me beautiful!</option>
 						<option value="Special Occasion Consultation">Can I get a special occasion consultation?</option>
@@ -55,7 +56,6 @@
 			</div>
 		</div>
 	</div>
-
 	<script>
 		function initMap() {
 			var salon = {lat: 34.151417, lng: -118.453617};
@@ -69,8 +69,4 @@
 			});
 		}
 </script>
-
-
-<script async defer
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjc7C1wVVqG6qUwJTS3d55Nu4xxen1yJ4&callback=initMap">
-</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjc7C1wVVqG6qUwJTS3d55Nu4xxen1yJ4&callback=initMap"></script>
