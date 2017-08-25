@@ -4,7 +4,7 @@ var db = require("../models");
 const SALON_NAME = "Blvd6 Salon";
 // show all product
 router.get("/", (req, res) => {
-    res.render("adminLog");
+    res.render("adminIndex");
 });
 router.get("/products", (req, res) => {
     db.Product.findAll({
@@ -454,53 +454,23 @@ router.delete("/customers/:id", (req, res) => {
         res.redirect("/admin/customers")
     });
 });
-//staff_service
-//to show the name of the staff for choosing to see service
-router.get("/logs", (req, res) => {
-    db.Staff.findAll({
-        order: [["name", "ASC"]],
-    }).then(data => {
-        // console.log(data);
-        res.render("adminLog", { staffLogs: data })
-    });
-});
-var staffServiceArr = [];
-router.get("/logs/:id", (req, res) => {
-    // console.log("param",req.params.id)
-    db.Staff_service.findAll({
-        where: {
-            StaffId: req.params.id,
 
-        }
-    }).then(data => {
-        // console.log(data);
-        for (var i = 0; i < data.length; i++) {
-
-            // console.log(data[i].dataValues.ServiceId);
-            staffServiceArr.push(data[i].dataValues.ServiceId)
-
-        }
-        return staffServiceArr
-    }).then((staffServiceArr) => {
-        // console.log("arr",staffServiceArr)
-        db.Service.findAll({
-            where: {
-                id: {
-                    in: staffServiceArr
-                }
+router.get("/staffservice", (req, res) => {
+    var data;
+    db.Staff.findAll().then(allStaff => {
+        // console.log(allStaff);
+        db.Service.findAll().then(allServices => {
+            // console.log(allServices)
+            data = {
+                aStaff: allStaff,
+                aServices: allServices
             }
-        }).then(data => {
-            console.log(data)
-            staffServiceArr = [];
-            res.render("adminLog", { staffServiceLogs: data });
-        })
-    })
-
-
-
-
-
-
+            // console.log(data.aStaff[0].dataValues.name)
+            // console.log(data.aServices[0].dataValues.name)
+            // console.log(data.aStaff)
+        });
+        res.render("adminStaffService", { data: data })
+    });
 });
 
 module.exports = router;

@@ -99,8 +99,45 @@ router.get("/services", (req, res) => {
     res.render("services", { services: data });
   })
 });
+//staff_service
+//to show what kind of service that each staff perform, will be in the future development
 
-
-
+// router.get("/logs", (req, res) => {
+//   db.Staff.findAll({
+//     order: [["name", "ASC"]],
+//   }).then(data => {
+//     // console.log(data);
+//     res.render("adminLog", { staffLogs: data })
+//   });
+// });
+// var staffServiceArr = [];
+// router.get("/logs/:id", (req, res) => {
+//   // console.log("param",req.params.id)
+//   db.Staff_service.findAll({
+//     where: {
+//       StaffId: req.params.id,
+//     }
+//   }).then(data => {
+//     // console.log(data);
+//     for (var i = 0; i < data.length; i++) {
+//       // console.log(data[i].dataValues.ServiceId);
+//       staffServiceArr.push(data[i].dataValues.ServiceId)
+//     }
+//     return staffServiceArr
+//   }).then((staffServiceArr) => {
+//     // console.log("arr",staffServiceArr)
+//     db.Service.findAll({
+//       where: {
+//         id: {
+//           in: staffServiceArr
+//         }
+//       }
+//     }).then(data => {
+//       console.log(data)
+//       staffServiceArr = [];
+//       res.render("adminLog", { staffServiceLogs: data });
+//     })
+//   })
+// });
 
 module.exports = router;
