@@ -103,7 +103,7 @@ router.get("/products/:brand", (req, res)=>{
       brand:req.params.brand
     } 
   }).then(data =>{
-    // console.log(data)
+    console.log(data)
     res.render("products", {products: data});
   });
 });

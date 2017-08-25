@@ -125,6 +125,7 @@ footer {
     width:100%;
     background:#E2E0E0;
     padding-top: 4px;
+    z-index: 5;
 }
 
 .social-media-icon {
@@ -166,4 +167,8 @@ footer {
 .contact-box {
     background-color: rgba(192, 192, 192, 0.5);
     /* margin-left: 15px; */
+}
+
+.map-div {
+    padding-left: 1px !important;
 }
