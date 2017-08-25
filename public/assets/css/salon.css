@@ -145,9 +145,25 @@ footer {
 }
 
 .label-short {
-    color: #FFF;
+    color: #000;
+    font-weight: bold;
 }
 
 .salon-box {
-    color: #FFF;
+    color: #000;
+    background-color: rgba(192, 192, 192, 0.5);
+    font-weight: bold;
+    /* margin-left: 15px; */
+}
+
+#map, #pano {
+    padding-left: 0;
+    float: left;
+    height: 100%;
+    min-width: 103%;
+}
+
+.contact-box {
+    background-color: rgba(192, 192, 192, 0.5);
+    /* margin-left: 15px; */
 }

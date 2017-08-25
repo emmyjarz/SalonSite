@@ -1,24 +1,17 @@
 <div class="container contact-content">
 	<div class="row">
-   		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 salon-box">
+   		<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 salon-box">
 			<h2>{{contactus.dataValues.name}}</h2>
 	 		<span>{{contactus.Address.dataValues.address1}}</span><br />
 	 		<span>{{contactus.Address.dataValues.address2}}</span><br />
 			<span>{{contactus.Address.dataValues.city}}, </span>
 			<span>{{contactus.Address.dataValues.state}}</span>
 			<span>{{contactus.Address.dataValues.zip}}</span><br />
-	 		<span><strong>Phone:</strong> {{contactus.Phone.dataValues.mobile}}</span><br />
-	   		<span><strong>Email:</strong> <a href="mailto:{{contactus.Email.dataValues.email}}?subject=Inquiry from www.blvd6.com">{{contactus.Email.dataValues.email}}</a></span>
+	 		<span>Phone: {{contactus.Phone.dataValues.mobile}}</span><br />
+	   		<span>Email: <a href="mailto:{{contactus.Email.dataValues.email}}?subject=Inquiry from www.blvd6.com">{{contactus.Email.dataValues.email}}</a></span>
 	   	</div>	
-	   	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
-	   	&nbsp;
-    	</div>
-    	<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
-    	&nbsp;
-    	</div>
   	</div>
   	<div class="row">
-    	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" id="map"></div>
     	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 contact-box">
     		<form action="" method="post">
     			<div class="form-group">
@@ -55,6 +48,8 @@
 				</form>	
 			</div>
 		</div>
+    	<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3"><div id="pano"></div></div>
+    	<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3"><div id="map"></div></div>
 	</div>
 	<script>
 		function initMap() {
@@ -67,6 +62,19 @@
 				position: salon,
 				map: map
 			});
+			var panorama = new google.maps.StreetViewPanorama(
+				document.getElementById('pano'), {
+				position: salon,
+				pov: {
+					heading: 15,
+					pitch: 10
+				}
+				});
+			map.setStreetView(panorama);
 		}
+	
+		$(document).ready(function() {
+			$("#iContact").addClass("active");
+		});
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjc7C1wVVqG6qUwJTS3d55Nu4xxen1yJ4&callback=initMap"></script>
