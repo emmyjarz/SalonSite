@@ -49,7 +49,11 @@ app.use("/admin", admin);
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
 db.sequelize.sync(
+<<<<<<< HEAD
   //{ force: true }
+=======
+  // { force: true }
+>>>>>>> 09f57ab2d7d6878077d209d04f4ef1bc2d033009
 ).then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);

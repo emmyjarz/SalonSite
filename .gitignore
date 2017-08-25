@@ -9,4 +9,9 @@ jspm_packages/
 
 # Config File
 config.json
+config.js
+
+# .DS_Store
+.DS_Store
+
 

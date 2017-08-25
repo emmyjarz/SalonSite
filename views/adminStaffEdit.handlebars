@@ -1,0 +1,167 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="/admin/salon/edit" class="nav-link">Salon</a></li>
+            <li class="nav-item"><a href="/admin/services" class="nav-link">Services</a></li>
+            <li class="nav-item"><a href="/admin/products" class="nav-link">Products</a></li>
+            <li class="nav-item"><a href="/admin/customers" class="nav-link">Customers</a></li>
+            <li class="nav-item"><a href="/admin/staff" class="nav-link">Staff</a></li>
+            <li class="nav-item"><a href="/admin/staffservice" class="nav-link">Staff/Services</a></li>
+        </ul>
+    </div>
+</nav>
+<br>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Update Staff</h3>
+        </div>
+        <!-- penel-heading -->
+        <div class="card-block">
+            <form class="form-group" action="/admin/staff/{{editStaff.id}}?_method=PUT" method="POST">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="">Name</label>
+                                <input type="text" class="form-control" name="name" placeholder="name" value="{{editStaff.name}}" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Last Name</label>
+                                <input type="text" class="form-control" name="lastname" placeholder="last name" value="{{editStaff.lastname}}" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Station</label>
+                                <input type="text" class="form-control" name="station" placeholder="station" value="{{editStaff.station}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Days</label>
+                                <input type="text" class="form-control" name="day" placeholder="day" value="{{editStaff.day}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Hours</label>
+                                <input type="text" class="form-control" name="hour" placeholder="hour" value="{{editStaff.hour}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Mobile</label>
+                                <input type="text" class="form-control" name="mobile" placeholder="mobile" value="{{editStaff.Phone.dataValues.mobile}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Home Phone</label>
+                                <input type="text" class="form-control" name="home" placeholder="home" value="{{editStaff.Phone.dataValues.home}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Email</label>
+                                <input type="text" class="form-control" name="email" placeholder="REQUIRED" value="{{editStaff.Email.dataValues.email}}">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="">Address1</label>
+                                <input type="text" class="form-control" name="address1" placeholder="address1" value="{{editStaff.Address.dataValues.address1}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Address2</label>
+                                <input type="text" class="form-control" name="address2" placeholder="address2" value="{{editStaff.Address.dataValues.address2}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="">City</label>
+                                <input type="text" class="form-control" name="city" placeholder="city" value="{{editStaff.Address.dataValues.city}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="">State</label>
+                                <select class="form-control" name="state">
+                                        <option value="">{{editStaff.Address.dataValues.state}}</option>
+                                        <option value="AL">Alabama</option>
+                                        <option value="AK">Alaska</option>
+                                        <option value="AZ">Arizona</option>
+                                        <option value="AR">Arkansas</option>
+                                        <option value="CA">California</option>
+                                        <option value="CO">Colorado</option>
+                                        <option value="CT">Connecticut</option>
+                                        <option value="DE">Delaware</option>
+                                        <option value="DC">District Of Columbia</option>
+                                        <option value="FL">Florida</option>
+                                        <option value="GA">Georgia</option>
+                                        <option value="HI">Hawaii</option>
+                                        <option value="ID">Idaho</option>
+                                        <option value="IL">Illinois</option>
+                                        <option value="IN">Indiana</option>
+                                        <option value="IA">Iowa</option>
+                                        <option value="KS">Kansas</option>
+                                        <option value="KY">Kentucky</option>
+                                        <option value="LA">Louisiana</option>
+                                        <option value="ME">Maine</option>
+                                        <option value="MD">Maryland</option>
+                                        <option value="MA">Massachusetts</option>
+                                        <option value="MI">Michigan</option>
+                                        <option value="MN">Minnesota</option>
+                                        <option value="MS">Mississippi</option>
+                                        <option value="MO">Missouri</option>
+                                        <option value="MT">Montana</option>
+                                        <option value="NE">Nebraska</option>
+                                        <option value="NV">Nevada</option>
+                                        <option value="NH">New Hampshire</option>
+                                        <option value="NJ">New Jersey</option>
+                                        <option value="NM">New Mexico</option>
+                                        <option value="NY">New York</option>
+                                        <option value="NC">North Carolina</option>
+                                        <option value="ND">North Dakota</option>
+                                        <option value="OH">Ohio</option>
+                                        <option value="OK">Oklahoma</option>
+                                        <option value="OR">Oregon</option>
+                                        <option value="PA">Pennsylvania</option>
+                                        <option value="RI">Rhode Island</option>
+                                        <option value="SC">South Carolina</option>
+                                        <option value="SD">South Dakota</option>
+                                        <option value="TN">Tennessee</option>
+                                        <option value="TX">Texas</option>
+                                        <option value="UT">Utah</option>
+                                        <option value="VT">Vermont</option>
+                                        <option value="VA">Virginia</option>
+                                        <option value="WA">Washington</option>
+                                        <option value="WV">West Virginia</option>
+                                        <option value="WI">Wisconsin</option>
+                                        <option value="WY">Wyoming</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Zip</label>
+                                <input type="text" class="form-control" name="zip" placeholder="zip" value="{{editStaff.Address.dataValues.zip}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Emergency Contact Name</label>
+                                <input type="text" class="form-control" name="emergency_contact_name" placeholder="emergency contact name" value="{{editStaff.emergency_contact_name}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Emergency Contact Phone</label>
+                                <input type="text" class="form-control" name="emergency_contact_phone" placeholder="emergency contact phone" value="{{editStaff.emergency_contact_phone}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Photo</label>
+                                <input type="text" class="form-control" name="photo" placeholder="photo" value="{{editStaff.photo}}">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="">Bio</label>
+                                <textarea class="form-control" name="bio" placeholder="bio" row="50" style="height:20em">{{editStaff.bio}}</textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Comment</label>
+                                <textarea class="form-control" name="comment" placeholder="comment" row="50" style="height:20em">{{editStaff.comment}}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Update Staff</button>
+                </div>{{!-- container --}}
+                <input type="hidden" value="{{editStaff.Phone.id}}" name="phoneId" />
+                <input type="hidden" value="{{editStaff.Email.id}}" name="emailId" />
+                <input type="hidden" value="{{editStaff.Address.id}}" name="addressId" />
+            </form>
+        </div>
+        <!-- card-block -->
+    </div>
+    <!-- second card -->
+</div>{{!-- container --}}

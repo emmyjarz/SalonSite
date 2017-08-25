@@ -1,3 +1,17 @@
+<<<<<<< HEAD
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active"><a href="#HomeDiv" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="#AboutDiv" class="nav-link">About</a></li>
+            <li class="nav-item"><a href="#ServicesDiv" class="nav-link">Services</a></li>
+            <li class="nav-item"><a href="#ProductsDiv" class="nav-link">Products</a></li>
+            <li class="nav-item"><a href="#ContactDiv" class="nav-link">Contact Us</a></li>
+        </ul>
+    </div>
+</nav>
+=======
+>>>>>>> Front-End
 <div id="ServicesDiv" class="full-content">
     <p id="service-text">Full Brazilian Blow-Outs!</p>
 </div>
@@ -21,14 +35,21 @@
         },
         {
             title: 'Special Occassion Up-Do!',
+<<<<<<< HEAD
+            url: 'url("http://localhost:8080/assets/images/updo.jpg")'
+=======
             url: 'url("http://localhost:8080/assets/images/updo.png")'
+>>>>>>> Front-End
         }
     ];
 
     $(document).ready(function () {
         setInterval(changeService, 3000);
+<<<<<<< HEAD
+=======
 
         $("#iHome").addClass("active");
+>>>>>>> Front-End
     });
 
     function changeService() {
@@ -42,6 +63,8 @@
 
             $(".full-content").css("background", `no-repeat center/100% ${svcImgs[newIdx].url}`);
             $("#service-text").html(svcImgs[newIdx].title);
+<<<<<<< HEAD
+=======
 			
             switch (svcImgs[newIdx].title) {
                 case 'Men\'s Haircut!':
@@ -63,6 +86,7 @@
                     $("#service-text").css("color", "#FFF").css("text-shadow", "1px 1px 0 #b989bd");
                     break;
             }
+>>>>>>> Front-End
         } else {
             $(".full-content").css("background", `no-repeat center/100% ${svcImgs[0].url}`);
             $("#service-text").html(svcImgs[0].title);
@@ -70,4 +94,8 @@
             curImgIdx = 0;
         }
     }
+<<<<<<< HEAD
+
+=======
+>>>>>>> Front-End
 </script>

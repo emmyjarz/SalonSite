@@ -32,6 +32,9 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             
         },
+        photo: {
+            type: DataTypes.STRING,
+        },
         comment: {
             type: DataTypes.STRING,
 

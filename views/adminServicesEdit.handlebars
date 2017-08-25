@@ -1,0 +1,68 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="/admin/salon/edit" class="nav-link">Salon</a></li>
+            <li class="nav-item"><a href="/admin/services" class="nav-link">Services</a></li>
+            <li class="nav-item"><a href="/admin/products" class="nav-link">Products</a></li>
+            <li class="nav-item"><a href="/admin/customers" class="nav-link">Customers</a></li>
+            <li class="nav-item"><a href="/admin/staff" class="nav-link">Staff</a></li>
+            <li class="nav-item"><a href="/admin/staffservice" class="nav-link">Staff/Services</a></li>
+        </ul>
+    </div>
+</nav>
+<br> {{!-- Add new product --}}
+<div class="container">
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Add Service
+        </h3>
+    </div>
+    <!-- penel-heading -->
+    <div class="card-block">
+        <form class="form-group" action="/admin/services/{{editservice.id}}?_method=PUT" method="POST">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="">Name</label>
+                            <input type="text" class="form-control" name="name" placeholder="Name" value="{{editservice.name}}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Duration</label>
+                            <input type="text" class="form-control" name="duration" placeholder="Duration"value="{{editservice.duration}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Member Price</label>
+                            <input type="text" class="form-control" name="member_price" placeholder="x.xx" value="{{editservice.member_price}}">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="">Non Member Price</label>
+                            <input type="text" class="form-control" name="nonmember_price" placeholder="x.xx" value="{{editservice.nonmember_price}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Cost</label>
+                            <input type="text" class="form-control" name="cost" placeholder="Cost" value="{{editservice.cost}}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Photo</label>
+                            <input type="text" class="form-control" name="photo" placeholder="Photo" value="{{editservice.photo}}">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="">Comment</label>
+                            <textarea class="form-control" name="comment" placeholder="Comment" row="50" style="height:20em">{{editservice.comment}}"</textarea>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Update Service</button>
+            </div>{{!-- container --}}
+        </form>
+    </div>
+    <!-- card-block -->
+</div>
+<!-- second card -->
+</div>

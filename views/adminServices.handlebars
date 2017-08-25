@@ -1,0 +1,138 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="/admin/salon/edit" class="nav-link">Salon</a></li>
+            <li class="nav-item"><a href="/admin/services" class="nav-link">Services</a></li>
+            <li class="nav-item"><a href="/admin/products" class="nav-link">Products</a></li>
+            <li class="nav-item"><a href="/admin/customers" class="nav-link">Customers</a></li>
+            <li class="nav-item"><a href="/admin/staff" class="nav-link">Staff</a></li>
+            <li class="nav-item"><a href="/admin/staffservice" class="nav-link">Staff/Services</a></li>
+        </ul>
+    </div>
+</nav>
+<br>
+<div class="container">
+    <div class="card">
+        <!-- Default card contents -->
+        <div class="card-header">
+            <h4 class="card-title">Services</h4>
+        </div>
+        <div class="card-block">
+
+            <!-- Table -->
+            <div style="height: 500px;overflow:auto;">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th><strong>Name</strong></strong>
+                            </th>
+                            <th><strong>Duration</strong></th>
+                            <th><strong>Member Price</strong></th>
+                            <th><strong>Non Member Price</strong></th>
+                            <th><strong>Cost</strong></th>
+                            <th><strong>Details</strong></th>
+                            <th><strong>Edit</strong></th>
+                            <th><strong>Delete</strong></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{!-- show services --}} {{#each services}}
+                        <tr>
+                            <td>{{this.name}}</td>
+                            <td>{{this.duration}} </td>
+                            <td>${{this.member_price}}</td>
+                            <td>${{this.nonmember_price}}</td>
+                            <td>${{this.cost}}</td>
+                            <td><i data-toggle="modal" data-target=".bd-example-modal-sm{{@index}}" class="fa fa-info-circle" aria-hidden="true"></td>
+                
+                            <div class="modal fade bd-example-modal-sm{{@index}}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-sm">
+                                    <div class="modal-content">
+                                        <p><strong>Name:</strong> {{this.name}}</p>
+                                        <p><strong>Duration:</strong> {{this.duration}}</p>
+                                        <p><strong>Member Price:</strong> {{this.member_price}}</p>
+                                        <p><strong>Non Member Price:</strong> {{this.nonmember_price}}</p>
+                                        
+                                        <p><strong>Cost:</strong> ${{this.cost}}</p>
+                                        <p><strong>Photo:</strong> {{this.photo}}</p>
+                                        <p><strong>Comment:</strong> {{this.comment}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            {{!-- update --}}
+                            <td>
+                                <form action="/admin/services/{{this.id}}/edit" method="GET">
+                                    <button type="submit" class="btn btn-info btn-sm"><i class="fa fa-info-circle" aria-hidden="true"> / Edit</i></button>
+                                </form>
+                            </td>
+                            {{!-- delete --}}
+                            <td>
+                                <form action="/admin/services/{{this.id}}?_method=DELETE" method="POST">
+                                    <button type="submit" class="btn btn-danger btn-sm deleteBtn">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- first card body -->
+    </div>
+    <!--first card -->
+    <br> {{!-- Add new product --}}
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Add Service
+            </h3>
+        </div>
+        <!-- penel-heading -->
+        <div class="card-block">
+            <form class="form-group" action="/admin/services/new" method="POST">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="">Name</label>
+                                <input type="text" class="form-control" name="name" placeholder="Name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Duration</label>
+                                <input type="text" class="form-control" name="duration" placeholder="Duration">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Member Price</label>
+                                <input type="text" class="form-control" name="member_price" placeholder="x.xx">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="">Non Member Price</label>
+                                <input type="text" class="form-control" name="nonmember_price" placeholder="x.xx">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Cost</label>
+                                <input type="text" class="form-control" name="cost" placeholder="Cost" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Photo</label>
+                                <input type="text" class="form-control" name="photo" placeholder="Photo">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="">Comment</label>
+                                <textarea class="form-control" name="comment" placeholder="Comment" row="50" style="height:20em"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Service</button>
+                </div>{{!-- container --}}
+            </form>
+        </div>
+        <!-- card-block -->
+    </div>
+    <!-- second card -->
+</div>
+<br>

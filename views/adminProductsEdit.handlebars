@@ -1,0 +1,79 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="/admin/salon/edit" class="nav-link">Salon</a></li>
+            <li class="nav-item"><a href="/admin/services" class="nav-link">Services</a></li>
+            <li class="nav-item"><a href="/admin/products" class="nav-link">Products</a></li>
+            <li class="nav-item"><a href="/admin/customers" class="nav-link">Customers</a></li>
+            <li class="nav-item"><a href="/admin/staff" class="nav-link">Staff</a></li>
+            <li class="nav-item"><a href="/admin/staffservice" class="nav-link">Staff/Services</a></li>
+        </ul>
+    </div>
+</nav>
+<br>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Update Product</h3>
+        </div>
+        <!-- penel-heading -->
+        <div class="card-block">
+            <form class="form-group" action="/admin/products/{{editproduct.id}}?_method=PUT" method="POST">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="">Brand</label>
+                                <input type="text" class="form-control" name="brand" placeholder="brand" value="{{editproduct.brand}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Name</label>
+                                <input type="text" class="form-control" name="name" placeholder="name" value="{{editproduct.name}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Size</label>
+                                <input type="text" class="form-control" name="size" placeholder="size" value="{{editproduct.size}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Price</label>
+                                <input type="text" class="form-control" name="price" placeholder="price" value="{{editproduct.price}}">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="">Stock Quantity</label>
+                                <input type="text" class="form-control" name="stock_quantity" placeholder="stock_quantity" value="{{editproduct.stock_quantity}}">
+
+                            </div>
+                            <div class="form-group">
+                                <label for="">Cost</label>
+
+                                <input type="text" class="form-control" name="cost" placeholder="cost" value="{{editproduct.cost}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Vendor</label>
+                                <input type="text" class="form-control" name="vendor" placeholder="vendor" value="{{editproduct.vendor}}">
+
+                            </div>
+                            <div class="form-group">
+                                <label for="">Photo</label>
+                                <input type="text" class="form-control" name="photo" placeholder="photo" value="{{editproduct.photo}}">
+
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="">Description</label>
+                                <textarea class="form-control" name="description" placeholder="Description" row="50" style="height:20em">{{editproduct.description}}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Update Product</button>
+                </div>{{!-- container --}}
+            </form>
+        </div>
+        <!-- card-block -->
+    </div>
+    <!-- second card -->
+</div>{{!-- container --}}
