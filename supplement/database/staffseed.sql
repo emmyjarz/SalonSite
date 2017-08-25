@@ -21,3 +21,7 @@ select * from addresses;
 select * from phones;
 select * from emails;
 select * from staffs;
+select * from services;
+select * from staff_services;
+
+insert into staff_services (ServiceId, StaffId,performDate, createdAt, updatedAt) values (1, 2, now(),now(), now());

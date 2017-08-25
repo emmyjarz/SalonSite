@@ -1,0 +1,91 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="/admin/salon/edit" class="nav-link">Salon</a></li>
+            <li class="nav-item"><a href="/admin/services" class="nav-link">Services</a></li>
+            <li class="nav-item"><a href="/admin/products" class="nav-link">Products</a></li>
+            <li class="nav-item"><a href="/admin/customers" class="nav-link">Customers</a></li>
+            <li class="nav-item"><a href="/admin/staff" class="nav-link">Staff</a></li>
+            <li class="nav-item"><a href="/admin/logs" class="nav-link">Staff with Services</a></li>
+        </ul>
+    </div>
+</nav>
+<br>
+<div class="container">
+    <div class="card">
+        <!-- Default card contents -->
+        <div class="card-header">
+            <h4 class="card-title">Staff and Services Activities</h4>
+        </div>
+        <div class="card-block">
+            <div class="row">
+
+          
+                    <br>
+                    <div class="container">
+                        <div style="height: 500px;overflow:auto;">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Staff</th>
+                                        <th>Services</th>
+                                        <th>
+                                            
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                              
+                                    <tr>
+                                        {{#each staffLogs}}
+                                       <a></a>  
+                                       <a href="/admin/logs/{{this.id}}">{{this.name}}</a>                                          {{/each}}
+                            
+                                    </tr>
+                                    <tr>
+                                        {{#each staffServiceLogs}}
+                                      <p>  {{this.name}}</p>
+                                        {{/each }}
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        {{!-- set table height --}}
+                    </div>
+           
+                <!-- column -->
+                <a href="/admin/logs"><button>search again</button></a>
+
+              
+                    {{!-- <div class="container">
+                        <br>
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Add Logs</h3>
+                            </div>
+                            <!-- penel-heading -->
+                            <div class="card-block">
+                                <div class="container">
+                                    
+
+                                        <div class="row">
+                                           
+                                     
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Add Product</button>
+                                </div>{{!-- container --}}
+                                </form>
+                            </div>
+                            <!-- card-block -->
+                        </div>
+                        {{!-- </div> --}}
+                    <br> --}}
+               
+            </div>
+            <!-- first card body -->
+        </div>
+        {{!-- row --}}
+    </div>
+    <!--first card -->
+  </div>

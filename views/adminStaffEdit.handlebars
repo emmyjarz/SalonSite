@@ -14,146 +14,65 @@
 <br>
 <div class="container">
     <div class="card">
-        <!-- Default card contents -->
         <div class="card-header">
-            <h4 class="card-title">Staff</h4>
-        </div>
-        <div class="card-block">
-
-            <!-- Table -->
-            <div style="height: 500px;overflow:auto;">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th><strong>Name</strong></strong>
-                            </th>
-                            <th><strong>Last Name</strong></th>
-                            <th><strong>Day</strong></th>
-                            <th><strong>Hours</strong></th>
-                            <th><strong>Mobile</strong></th>
-                            <th><strong>Details</strong></th>
-                            <th><strong>Edit</strong></th>
-                            <th><strong>Delete</strong></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {{!-- show products --}} {{#each staff}}
-                        <tr>
-                            <td>{{this.name}}</td>
-                            <td>{{this.lastname}} </td>
-                            <td>{{this.day}}</td>
-                            <td>{{this.hour}}</td>
-                            <td>{{this.Phone.dataValues.mobile}}</td>
-
-                            <td><i data-toggle="modal" data-target=".bd-example-modal-sm{{@index}}" class="fa fa-info-circle"
-                                    aria-hidden="true"></td>
-                
-                            <div class="modal fade bd-example-modal-sm{{@index}}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-sm">
-                                    <div class="modal-content">
-                                        <p><strong>Name:</strong> {{this.name}}</p>
-                                        <p><strong>Last Name:</strong> {{this.lastname}}</p>
-                                        <p><strong>Station:</strong> {{this.station}}</p>
-                                        <p><strong>Days:</strong> {{this.day}}</p></strong>
-                                        <p><strong>Hours:</strong> {{this.hour}}</p>
-                                        <p><strong>Mobile:</strong> {{this.Phone.dataValues.mobile}}</p>
-                                        <p><strong>Home Phone:</strong> {{this.Phone.dataValues.home}}</p>
-                                        <p><strong>Email:</strong> {{this.Email.dataValues.email}}</p>
-                                        <p><strong>Address1:</strong> {{this.Address.dataValues.address1}}</p>
-                                        <p><strong>Address2:</strong> {{this.Address.dataValues.address2}}</p>
-                                        <p><strong>City:</strong> {{this.Address.dataValues.city}}</p>
-                                        <p><strong>State:</strong> {{this.Address.dataValues.state}}</p>
-                                        <p><strong>Zip:</strong> {{this.Address.dataValues.zip}}</p>
-                                        <p><strong>Emergency Contact Name:</strong> {{this.emergency_contact_name}}</p>
-                                        <p><strong>Emergency Contact Phone:</strong> {{this.emergency_contact_phone}}</p>
-                                        <p><strong>Bio:</strong> {{this.bio}}</p>
-                                        <p><strong>Comment:</strong> {{this.comment}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            {{!-- update --}}
-                            <td>
-                                <form action="/admin/staff/{{this.id}}/edit" method="GET">
-                                    <button type="submit" class="btn btn-info btn-sm">Edit</i></button>
-                                </form>
-                            </td>
-                            {{!-- delete --}}
-                            <td>
-                                <form action="/admin/staff/{{this.id}}?_method=DELETE" method="POST">
-                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                                </form>
-                            </td>
-                        </tr>
-                        {{/each}}
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <!-- first card body -->
-    </div>
-    <!--first card -->
-    <br> {{!-- Add new product --}}
-    <div class="card">
-        <div class="card-header">
-            <h3 class="card-title">Add Staff</h3>
+            <h3 class="card-title">Update Staff</h3>
         </div>
         <!-- penel-heading -->
         <div class="card-block">
-            <form class="form-group" action="/admin/staff/new" method="POST">
+            <form class="form-group" action="/admin/staff/{{editStaff.id}}?_method=PUT" method="POST">
                 <div class="container">
                     <div class="row">
                         <div class="col">
                             <div class="form-group">
                                 <label for="">Name</label>
-                                <input type="text" class="form-control" name="name" placeholder="name" required>
+                                <input type="text" class="form-control" name="name" placeholder="name" value="{{editStaff.name}}" required>
                             </div>
                             <div class="form-group">
                                 <label for="">Last Name</label>
-                                <input type="text" class="form-control" name="lastname" placeholder="last name" required>
+                                <input type="text" class="form-control" name="lastname" placeholder="last name" value="{{editStaff.lastname}}" required>
                             </div>
                             <div class="form-group">
                                 <label for="">Station</label>
-                                <input type="text" class="form-control" name="station" placeholder="station">
+                                <input type="text" class="form-control" name="station" placeholder="station" value="{{editStaff.station}}">
                             </div>
                             <div class="form-group">
                                 <label for="">Days</label>
-                                <input type="text" class="form-control" name="day" placeholder="day">
+                                <input type="text" class="form-control" name="day" placeholder="day" value="{{editStaff.day}}">
                             </div>
                             <div class="form-group">
                                 <label for="">Hours</label>
-                                <input type="text" class="form-control" name="hour" placeholder="hour">
+                                <input type="text" class="form-control" name="hour" placeholder="hour" value="{{editStaff.hour}}">
                             </div>
                             <div class="form-group">
                                 <label for="">Mobile</label>
-                                <input type="text" class="form-control" name="mobile" placeholder="mobile">
+                                <input type="text" class="form-control" name="mobile" placeholder="mobile" value="{{editStaff.Phone.dataValues.mobile}}">
                             </div>
                             <div class="form-group">
                                 <label for="">Home Phone</label>
-                                <input type="text" class="form-control" name="home" placeholder="home">
+                                <input type="text" class="form-control" name="home" placeholder="home" value="{{editStaff.Phone.dataValues.home}}">
                             </div>
                             <div class="form-group">
                                 <label for="">Email</label>
-                                <input type="text" class="form-control" name="email" placeholder="REQUIRED" required>
+                                <input type="text" class="form-control" name="email" placeholder="REQUIRED" value="{{editStaff.Email.dataValues.email}}">
                             </div>
                         </div>
                         <div class="col">
-
                             <div class="form-group">
                                 <label for="">Address1</label>
-                                <input type="text" class="form-control" name="address1" placeholder="address1">
+                                <input type="text" class="form-control" name="address1" placeholder="address1" value="{{editStaff.Address.dataValues.address1}}">
                             </div>
                             <div class="form-group">
                                 <label for="">Address2</label>
-                                <input type="text" class="form-control" name="address2" placeholder="address2">
+                                <input type="text" class="form-control" name="address2" placeholder="address2" value="{{editStaff.Address.dataValues.address2}}">
                             </div>
                             <div class="form-group">
                                 <label for="">City</label>
-                                <input type="text" class="form-control" name="city" placeholder="city">
+                                <input type="text" class="form-control" name="city" placeholder="city" value="{{editStaff.Address.dataValues.city}}">
                             </div>
                             <div class="form-group">
                                 <label for="">State</label>
-                                <select class="form-control" name="state" placeholder="state">
-                                        <option value="">State</option>
+                                <select class="form-control" name="state">
+                                        <option value="">{{editStaff.Address.dataValues.state}}</option>
                                         <option value="AL">Alabama</option>
                                         <option value="AK">Alaska</option>
                                         <option value="AZ">Arizona</option>
@@ -209,38 +128,40 @@
                             </div>
                             <div class="form-group">
                                 <label for="">Zip</label>
-                                <input type="text" class="form-control" name="zip" placeholder="zip">
+                                <input type="text" class="form-control" name="zip" placeholder="zip" value="{{editStaff.Address.dataValues.zip}}">
                             </div>
                             <div class="form-group">
                                 <label for="">Emergency Contact Name</label>
-                                <input type="text" class="form-control" name="emergency_contact_name" placeholder="emergency contact name">
+                                <input type="text" class="form-control" name="emergency_contact_name" placeholder="emergency contact name" value="{{editStaff.emergency_contact_name}}">
                             </div>
                             <div class="form-group">
                                 <label for="">Emergency Contact Phone</label>
-                                <input type="text" class="form-control" name="emergency_contact_phone" placeholder="emergency contact phone">
+                                <input type="text" class="form-control" name="emergency_contact_phone" placeholder="emergency contact phone" value="{{editStaff.emergency_contact_phone}}">
                             </div>
                             <div class="form-group">
                                 <label for="">Photo</label>
-                                <input type="text" class="form-control" name="photo" placeholder="photo">
+                                <input type="text" class="form-control" name="photo" placeholder="photo" value="{{editStaff.photo}}">
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-group">
                                 <label for="">Bio</label>
-                                <textarea class="form-control" name="bio" placeholder="bio" row="50" style="height:20em"></textarea>
+                                <textarea class="form-control" name="bio" placeholder="bio" row="50" style="height:20em">{{editStaff.bio}}</textarea>
                             </div>
                             <div class="form-group">
                                 <label for="">Comment</label>
-                                <textarea class="form-control" name="comment" placeholder="comment" row="50" style="height:20em"></textarea>
+                                <textarea class="form-control" name="comment" placeholder="comment" row="50" style="height:20em">{{editStaff.comment}}</textarea>
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Add Staff</button>
+                    <button type="submit" class="btn btn-primary">Update Staff</button>
                 </div>{{!-- container --}}
+                <input type="hidden" value="{{editStaff.Phone.id}}" name="phoneId" />
+                <input type="hidden" value="{{editStaff.Email.id}}" name="emailId" />
+                <input type="hidden" value="{{editStaff.Address.id}}" name="addressId" />
             </form>
         </div>
         <!-- card-block -->
     </div>
     <!-- second card -->
-</div>
-<br>
+</div>{{!-- container --}}

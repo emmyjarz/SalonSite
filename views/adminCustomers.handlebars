@@ -16,7 +16,7 @@
     <div class="card">
         <!-- Default card contents -->
         <div class="card-header">
-            <h4 class="card-title">Staff</h4>
+            <h4 class="card-title">Customers</h4>
         </div>
         <div class="card-block">
 
@@ -28,22 +28,22 @@
                             <th><strong>Name</strong></strong>
                             </th>
                             <th><strong>Last Name</strong></th>
-                            <th><strong>Day</strong></th>
-                            <th><strong>Hours</strong></th>
-                            <th><strong>Mobile</strong></th>
+                            <th><strong>Gender</strong></th>
+                            <th><strong>Balance</strong></th>
+                            <th><strong>Last Visit</strong></th>
                             <th><strong>Details</strong></th>
                             <th><strong>Edit</strong></th>
                             <th><strong>Delete</strong></th>
                         </tr>
                     </thead>
                     <tbody>
-                        {{!-- show products --}} {{#each staff}}
+                        {{!-- show products --}} {{#each customers}}
                         <tr>
                             <td>{{this.name}}</td>
                             <td>{{this.lastname}} </td>
-                            <td>{{this.day}}</td>
-                            <td>{{this.hour}}</td>
-                            <td>{{this.Phone.dataValues.mobile}}</td>
+                            <td>{{this.gender}}</td>
+                            <td>${{this.balance}}</td>
+                            <td>{{this.lastvisit}}</td>
 
                             <td><i data-toggle="modal" data-target=".bd-example-modal-sm{{@index}}" class="fa fa-info-circle"
                                     aria-hidden="true"></td>
@@ -53,9 +53,10 @@
                                     <div class="modal-content">
                                         <p><strong>Name:</strong> {{this.name}}</p>
                                         <p><strong>Last Name:</strong> {{this.lastname}}</p>
-                                        <p><strong>Station:</strong> {{this.station}}</p>
-                                        <p><strong>Days:</strong> {{this.day}}</p></strong>
-                                        <p><strong>Hours:</strong> {{this.hour}}</p>
+                                        <p><strong>Password:</strong> {{this.password}}</p>
+                                        <p><strong>Gender:</strong> {{this.gender}}</p></strong>
+                                        <p><strong>Balance:</strong> {{this.balance}}</p>
+                                        <p><strong>Last Visit:</strong> {{this.lastvisit}}</p>
                                         <p><strong>Mobile:</strong> {{this.Phone.dataValues.mobile}}</p>
                                         <p><strong>Home Phone:</strong> {{this.Phone.dataValues.home}}</p>
                                         <p><strong>Email:</strong> {{this.Email.dataValues.email}}</p>
@@ -64,22 +65,20 @@
                                         <p><strong>City:</strong> {{this.Address.dataValues.city}}</p>
                                         <p><strong>State:</strong> {{this.Address.dataValues.state}}</p>
                                         <p><strong>Zip:</strong> {{this.Address.dataValues.zip}}</p>
-                                        <p><strong>Emergency Contact Name:</strong> {{this.emergency_contact_name}}</p>
-                                        <p><strong>Emergency Contact Phone:</strong> {{this.emergency_contact_phone}}</p>
-                                        <p><strong>Bio:</strong> {{this.bio}}</p>
+                                        <p><strong>Photo:</strong> {{this.photo}}</p>
                                         <p><strong>Comment:</strong> {{this.comment}}</p>
                                     </div>
                                 </div>
                             </div>
                             {{!-- update --}}
                             <td>
-                                <form action="/admin/staff/{{this.id}}/edit" method="GET">
+                                <form action="/admin/customers/{{this.id}}/edit" method="GET">
                                     <button type="submit" class="btn btn-info btn-sm">Edit</i></button>
                                 </form>
                             </td>
                             {{!-- delete --}}
                             <td>
-                                <form action="/admin/staff/{{this.id}}?_method=DELETE" method="POST">
+                                <form action="/admin/customers/{{this.id}}?_method=DELETE" method="POST">
                                     <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                                 </form>
                             </td>
@@ -95,11 +94,11 @@
     <br> {{!-- Add new product --}}
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Add Staff</h3>
+            <h3 class="card-title">Add Customer</h3>
         </div>
         <!-- penel-heading -->
         <div class="card-block">
-            <form class="form-group" action="/admin/staff/new" method="POST">
+            <form class="form-group" action="/admin/customers/new" method="POST">
                 <div class="container">
                     <div class="row">
                         <div class="col">
@@ -112,16 +111,26 @@
                                 <input type="text" class="form-control" name="lastname" placeholder="last name" required>
                             </div>
                             <div class="form-group">
-                                <label for="">Station</label>
-                                <input type="text" class="form-control" name="station" placeholder="station">
+                                <label for="">Gender</label>
+                                <input type="text" class="form-control" name="gender" placeholder="gender">
                             </div>
                             <div class="form-group">
-                                <label for="">Days</label>
-                                <input type="text" class="form-control" name="day" placeholder="day">
+                                <label for="">Password</label>
+                                <input type="text" class="form-control" name="password" placeholder="password">
                             </div>
                             <div class="form-group">
-                                <label for="">Hours</label>
-                                <input type="text" class="form-control" name="hour" placeholder="hour">
+                                <label for="">Balance</label>
+                                <input type="text" class="form-control" name="balance" placeholder="x.xx">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Last Visit</label>
+                                <div class='input-group date' id='datetimepicker1'>
+                                    <input type='text' class="form-control" name="lastvisit" />
+                                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+
                             </div>
                             <div class="form-group">
                                 <label for="">Mobile</label>
@@ -131,13 +140,13 @@
                                 <label for="">Home Phone</label>
                                 <input type="text" class="form-control" name="home" placeholder="home">
                             </div>
+                            
+                        </div>
+                        <div class="col">
                             <div class="form-group">
                                 <label for="">Email</label>
                                 <input type="text" class="form-control" name="email" placeholder="REQUIRED" required>
                             </div>
-                        </div>
-                        <div class="col">
-
                             <div class="form-group">
                                 <label for="">Address1</label>
                                 <input type="text" class="form-control" name="address1" placeholder="address1">
@@ -212,30 +221,18 @@
                                 <input type="text" class="form-control" name="zip" placeholder="zip">
                             </div>
                             <div class="form-group">
-                                <label for="">Emergency Contact Name</label>
-                                <input type="text" class="form-control" name="emergency_contact_name" placeholder="emergency contact name">
-                            </div>
-                            <div class="form-group">
-                                <label for="">Emergency Contact Phone</label>
-                                <input type="text" class="form-control" name="emergency_contact_phone" placeholder="emergency contact phone">
-                            </div>
-                            <div class="form-group">
                                 <label for="">Photo</label>
                                 <input type="text" class="form-control" name="photo" placeholder="photo">
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-group">
-                                <label for="">Bio</label>
-                                <textarea class="form-control" name="bio" placeholder="bio" row="50" style="height:20em"></textarea>
-                            </div>
-                            <div class="form-group">
                                 <label for="">Comment</label>
-                                <textarea class="form-control" name="comment" placeholder="comment" row="50" style="height:20em"></textarea>
+                                <textarea class="form-control" name="comment" placeholder="comment" row="50" style="height:20em; width: 20em"></textarea>
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Add Staff</button>
+                    <button type="submit" class="btn btn-primary">Add Customer</button>
                 </div>{{!-- container --}}
             </form>
         </div>
@@ -244,3 +241,10 @@
     <!-- second card -->
 </div>
 <br>
+
+<script type="text/javascript">
+    $(function () {
+        $('#datetimepicker1').datetimepicker();
+    });
+
+</script>
