@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="/admin/salon/edit" class="nav-link">Salon</a></li>
+            <li class="nav-item"><a href="/admin/services" class="nav-link">Services</a></li>
+            <li class="nav-item"><a href="/admin/products" class="nav-link">Products</a></li>
+            <li class="nav-item"><a href="/admin/customers" class="nav-link">Customers</a></li>
+            <li class="nav-item"><a href="/admin/staff" class="nav-link">Staff</a></li>
+            <li class="nav-item"><a href="/admin/staffservice" class="nav-link">Staff/Services</a></li>
+        </ul>
+    </div>
+</nav>
+<br>
+<div class="container">
+    <div class="row">
+
+        <div class="col">
+            <h3>Please select staff name</h3>
+            <select name="{{this.id}}" class="custom-select form-control" required>
+                <option value="">Select an Option</option>
+             {{#each data}}
+             <option value="{{this.name}}">{{this.aStaff.dataValues.name}}</option>
+            {{/each}}
+            </select>
+        </div>
+        <div class="col">
+            <h3>Please select service</h3>
+
+            <select name="{{this.id}}" class="custom-select form-control" required>
+                <option value="">Select an Option</option>
+             {{#each allServices}}
+                
+                <option value="{{this.name}}">{{this.name}}</option>
+              
+                 {{/each}}
+            </select>
+
+
+        </div>
+        <div class="col">
+
+        </div>
+    </div>
+
+
+    {{this.name}} {{#each allService}} {{this.name}} {{/each}}

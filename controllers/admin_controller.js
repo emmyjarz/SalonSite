@@ -4,7 +4,7 @@ var db = require("../models");
 const SALON_NAME = "Blvd6 Salon";
 // show all product
 router.get("/", (req, res) => {
-    res.render("adminSalon");
+    res.render("adminIndex");
 });
 router.get("/products", (req, res) => {
     db.Product.findAll({
@@ -68,7 +68,9 @@ router.delete("/products/:id", (req, res) => {
 
 //service
 router.get("/services", (req, res) => {
-    db.Service.findAll().then(data => {
+    db.Service.findAll({
+        order: [["name", "ASC"]]
+    }).then(data => {
         console.log(data);
         res.render("adminservices", { services: data });
     });
@@ -144,9 +146,6 @@ router.get("/salon/edit", (req, res) => {
 });
 //update - update database
 router.put("/salon/update", (req, res) => {
-    // console.log(req.body.phoneId)
-    // console.log(req.body.emailId)
-    // console.log(req.body.addressId)
     db.Email.update({
         email: req.body.email
     }, {
@@ -188,6 +187,7 @@ router.put("/salon/update", (req, res) => {
 // show all staff
 router.get("/staff", (req, res) => {
     db.Staff.findAll({
+        order: [["name", "ASC"]],
         include: [db.Address
             , db.Email, db.Phone
         ]
@@ -256,20 +256,57 @@ router.get("/staff/:id/edit", (req, res) => {
     db.Staff.findOne({
         where: {
             id: req.params.id
-        }
+        },
+        include: [db.Address
+            , db.Email, db.Phone
+        ]
     }).then(data => {
-        res.render("adminStaff", { editStaff: data })
+        res.render("adminStaffEdit", { editStaff: data })
     });
 });
 //update - update database
 router.put("/staff/:id", (req, res) => {
-    db.Staff.update(req.body, {
-        where: {
-            id: req.params.id
-        }
-    }).then(data => {
-        res.redirect("/admin/staff")
-    });
+    db.Email.update({
+        email: req.body.email
+    }, {
+            where: {
+                id: req.body.emailId
+            }
+        }).then(db.Address.update({
+            address1: req.body.address1,
+            address2: req.body.address2,
+            city: req.body.city,
+            state: req.body.state,
+            zip: req.body.zip
+        }, {
+                where: {
+                    id: req.body.addressId
+                }
+            })).then(db.Phone.update({
+                mobile: req.body.mobile,
+                home: req.body.home
+            }, {
+                    where: {
+                        id: req.body.phoneId
+                    }
+                })).then(db.Staff.update({
+                    name: req.body.name,
+                    lastname: req.body.lastname,
+                    bio: req.body.bio,
+                    station: req.body.stataion,
+                    day: req.body.day,
+                    hour: req.body.hour,
+                    emergency_contact_name: req.body.emergency_contact_name,
+                    emergency_contact_phone: req.body.emergency_contact_phone,
+                    photo: req.body.photo,
+                    comment: req.body.comment
+                }, {
+                        where: {
+                            id: req.params.id
+                        }
+                    })).then(data => {
+                        res.redirect("/admin/staff");
+                    });
 })
 //delete staff in database
 router.delete("/staff/:id", (req, res) => {
@@ -287,12 +324,13 @@ router.delete("/staff/:id", (req, res) => {
 // show all customer
 router.get("/customers", (req, res) => {
     db.Customer.findAll({
+        order: [["name", "ASC"]],
         include: [db.Address
             , db.Email, db.Phone
         ]
     }).then(data => {
         // console.log(data)
-        res.render("adminCustomers", { Customers: data });
+        res.render("adminCustomers", { customers: data });
     });
 });
 //add customer in database
@@ -355,20 +393,55 @@ router.get("/customers/:id/edit", (req, res) => {
     db.Customer.findOne({
         where: {
             id: req.params.id
-        }
+        },
+        include: [db.Address
+            , db.Email, db.Phone
+        ]
     }).then(data => {
-        res.render("adminCustomers", { editCustomer: data })
+        res.render("adminCustomersEdit", { editCustomer: data })
     });
 });
 //update - update database
 router.put("/customers/:id", (req, res) => {
-    db.Customer.update(req.body, {
-        where: {
-            id: req.params.id
-        }
-    }).then(data => {
-        res.redirect("/admin/customers")
-    });
+    db.Email.update({
+        email: req.body.email
+    }, {
+            where: {
+                id: req.body.emailId
+            }
+        }).then(db.Address.update({
+            address1: req.body.address1,
+            address2: req.body.address2,
+            city: req.body.city,
+            state: req.body.state,
+            zip: req.body.zip
+        }, {
+                where: {
+                    id: req.body.addressId
+                }
+            })).then(db.Phone.update({
+                mobile: req.body.mobile,
+                home: req.body.home
+            }, {
+                    where: {
+                        id: req.body.phoneId
+                    }
+                })).then(db.Customer.update({
+                    name: req.body.name,
+                    lastname: req.body.lastname,
+                    password: req.body.password,
+                    gender: req.body.gender,
+                    balance: req.body.balance,
+                    lastvisit: req.body.lastvisit,
+                    photo: req.body.photo,
+                    comment: req.body.comment
+                }, {
+                        where: {
+                            id: req.params.id
+                        }
+                    })).then(data => {
+                        res.redirect("/admin/customers");
+                    });
 })
 //delete staff in database
 router.delete("/customers/:id", (req, res) => {
@@ -382,5 +455,24 @@ router.delete("/customers/:id", (req, res) => {
     });
 });
 
+router.get("/staffservice", (req, res) => {
+    var data;
+    db.Staff.findAll().then(allStaff => {
+        // console.log(allStaff);
+        db.Service.findAll().then(allServices => {
+            // console.log(allServices)
+            data = {
+                aStaff: allStaff,
+                aServices: allServices
+            }
+            // console.log(data.aStaff[0].dataValues.name)
+            // console.log(data.aServices[0].dataValues.name)
+            // console.log(data.aStaff)
+        });
+        res.render("adminStaffService", { data: data })
+    });
+});
 
 module.exports = router;
+
+
