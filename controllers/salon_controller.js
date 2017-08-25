@@ -20,15 +20,6 @@ router.get("/about", (req, res) => {
     ]
   }).then(function (data) {
     // console.log(data);
-    // console.log(data.dataValues.name);
-    // console.log(data.dataValues.description);
-    // console.log(data.Address.dataValues.address1);
-    // console.log(data.Address.dataValues.address2);
-    // console.log(data.Address.dataValues.city);
-    // console.log(data.Address.dataValues.state);
-    // console.log(data.Address.dataValues.zip);
-    // console.log(data.Phone.dataValues.mobile);
-    // console.log(data.Email.dataValues.email);
 
     res.render("about", { about: data });
   });
@@ -44,16 +35,8 @@ router.get("/contactus", (req, res) => {
       , db.Email, db.Phone
     ]
   }).then( data=> {
-    console.log(data);
-    // console.log(data.dataValues.name);
-    // console.log(data.dataValues.description);
-    // console.log(data.Address.dataValues.address1);
-    // console.log(data.Address.dataValues.address2);
-    // console.log(data.Address.dataValues.city);
-    // console.log(data.Address.dataValues.state);
-    // console.log(data.Address.dataValues.zip);
-    // console.log(data.Phone.dataValues.mobile);
-    // console.log(data.Email.dataValues.email);
+    //console.log(data);
+
     res.render("contactus", { contactus: data });
     });
 });
@@ -88,8 +71,6 @@ router.get("/products", (req, res) => {
     attributes:["brand","photo", "id"],
     group:"brand"
   }).then(data =>{
-    console.log(data);
-    
     //  console.log(data[0].dataValues.brand);
     res.render("products", { productBrands: data });
   });
@@ -103,8 +84,9 @@ router.get("/products/:brand", (req, res)=>{
       brand:req.params.brand
     } 
   }).then(data =>{
-    console.log(data)
-    res.render("products", {products: data});
+    console.log("data2: ", data)
+    res.json({products: data});
+    //res.render("products", {products: data});
   });
 });
 
@@ -115,7 +97,7 @@ router.get("/staff", (req, res)=>{
       , db.Email, db.Phone
     ]
   }).then(data=>{
-    console.log(data);
+    //console.log(data);
     res.render("staff", {staff:data});
   });
 });

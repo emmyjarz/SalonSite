@@ -22,9 +22,9 @@
     
     function sayHelloToMyLittleFriend(prod) {
         let divs = "";
-
         jQuery.get("/products/" + prod, function(data) {
             let idx = "";
+console.log("Data: ", JSON.stringify(data, null, 2));
 
             $.each(data.products, function(index, value) {
                 if (index % 2 !== 0) {
