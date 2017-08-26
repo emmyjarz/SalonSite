@@ -172,3 +172,7 @@ footer {
 .map-div {
     padding-left: 1px !important;
 }
+
+ul .admin-ul {
+    display: none;
+}

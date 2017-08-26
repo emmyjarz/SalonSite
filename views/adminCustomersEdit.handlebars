@@ -1,88 +1,74 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
-            <li class="nav-item"><a href="/admin/salon/edit" class="nav-link">Salon</a></li>
-            <li class="nav-item"><a href="/admin/services" class="nav-link">Services</a></li>
-            <li class="nav-item"><a href="/admin/products" class="nav-link">Products</a></li>
-            <li class="nav-item"><a href="/admin/customers" class="nav-link">Customers</a></li>
-            <li class="nav-item"><a href="/admin/staff" class="nav-link">Staff</a></li>
-            <li class="nav-item"><a href="/admin/staffservice" class="nav-link">Staff/Services</a></li>
-        </ul>
-    </div>
-</nav>
 <br> {{!-- Add new customer --}}
 <div class="container">
-<div class="card">
-    <div class="card-header">
-        <h3 class="card-title">Edit Customer</h3>
-    </div>
-    <!-- penel-heading -->
-    <div class="card-block">
-        <form class="form-group" action="/admin/customers/{{editCustomer.id}}?_method=PUT" method="POST">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="">Name</label>
-                            <input type="text" class="form-control" name="name" placeholder="name" value="{{editCustomer.name}}" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="">Last Name</label>
-                            <input type="text" class="form-control" name="lastname" placeholder="last name" value="{{editCustomer.lastname}}" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="">Gender</label>
-                            <input type="text" class="form-control" name="gender" placeholder="gender" value="{{editCustomer.gender}}">
-                        </div>
-                        <div class="form-group">
-                            <label for="">Password</label>
-                            <input type="text" class="form-control" name="password" placeholder="password" value="{{editCustomer.password}}">
-                        </div>
-                        <div class="form-group">
-                            <label for="">Balance</label>
-                            <input type="text" class="form-control" name="balance" placeholder="x.xx" value="{{editCustomer.balance}}">
-                        </div>
-                        <div class="form-group">
-                            <label for="">Last Visit</label>
-                            <div class='input-group date' id='datetimepicker1'>
-                                <input type='text' class="form-control" name="lastvisit" value="{{editCustomer.lastvisit}}"/>
-                                <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Edit Customer</h3>
+        </div>
+        <!-- penel-heading -->
+        <div class="card-block">
+            <form class="form-group" action="/admin/customers/{{editCustomer.id}}?_method=PUT" method="POST">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="">Name</label>
+                                <input type="text" class="form-control" name="name" placeholder="name" value="{{editCustomer.name}}" required>
                             </div>
-
+                            <div class="form-group">
+                                <label for="">Last Name</label>
+                                <input type="text" class="form-control" name="lastname" placeholder="last name" value="{{editCustomer.lastname}}" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Gender</label>
+                                <input type="text" class="form-control" name="gender" placeholder="gender" value="{{editCustomer.gender}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Password</label>
+                                <input type="text" class="form-control" name="password" placeholder="password" value="{{editCustomer.password}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Balance</label>
+                                <input type="text" class="form-control" name="balance" placeholder="x.xx" value="{{editCustomer.balance}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Last Visit</label>
+                                <div class='input-group date' id='datetimepicker1'>
+                                    <input type='text' class="form-control" name="lastvisit" id="lastvisit" value="{{editCustomer.lastvisit}}" />
+                                    {{!-- <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span> --}}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Mobile</label>
+                                <input type="text" class="form-control" name="mobile" placeholder="mobile" value="{{editCustomer.Phone.dataValues.mobile}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Home Phone</label>
+                                <input type="text" class="form-control" name="home" placeholder="home" value="{{editCustomer.Phone.dataValues.home}}">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="">Mobile</label>
-                            <input type="text" class="form-control" name="mobile" placeholder="mobile" value="{{editCustomer.Phone.dataValues.mobile}}">
-                        </div>
-                        <div class="form-group">
-                            <label for="">Home Phone</label>
-                            <input type="text" class="form-control" name="home" placeholder="home" value="{{editCustomer.Phone.dataValues.home}}">
-                        </div>
-
-                    </div>
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="">Email</label>
-                            <input type="text" class="form-control" name="email" placeholder="REQUIRED" value="{{editCustomer.Email.dataValues.email}}" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="">Address1</label>
-                            <input type="text" class="form-control" name="address1" placeholder="address1" value="{{editCustomer.Address.dataValues.address1}}">
-                        </div>
-                        <div class="form-group">
-                            <label for="">Address2</label>
-                            <input type="text" class="form-control" name="address2" placeholder="address2" value="{{editCustomer.Address.dataValues.address2}}">
-                        </div>
-                        <div class="form-group">
-                            <label for="">City</label>
-                            <input type="text" class="form-control" name="city" placeholder="city" value="{{editCustomer.Address.dataValues.city}}">
-                        </div>
-                        <div class="form-group">
-                            <label for="">State</label>
-                            <select class="form-control" name="state" placeholder="state">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="">Email</label>
+                                <input type="text" class="form-control" name="email" placeholder="REQUIRED" value="{{editCustomer.Email.dataValues.email}}"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Address1</label>
+                                <input type="text" class="form-control" name="address1" placeholder="address1" value="{{editCustomer.Address.dataValues.address1}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Address2</label>
+                                <input type="text" class="form-control" name="address2" placeholder="address2" value="{{editCustomer.Address.dataValues.address2}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="">City</label>
+                                <input type="text" class="form-control" name="city" placeholder="city" value="{{editCustomer.Address.dataValues.city}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="">State</label>
+                                <select class="form-control" name="state" placeholder="state">
                                         <option value="">{{editCustomer.Address.dataValues.state}}</option>
                                         <option value="AL">Alabama</option>
                                         <option value="AK">Alaska</option>
@@ -136,31 +122,41 @@
                                         <option value="WI">Wisconsin</option>
                                         <option value="WY">Wyoming</option>
                                 </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Zip</label>
+                                <input type="text" class="form-control" name="zip" placeholder="zip" value="{{editCustomer.Address.dataValues.zip}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Photo</label>
+                                <input type="text" class="form-control" name="photo" placeholder="photo" value="{{editCustomer.photo}}">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="">Zip</label>
-                            <input type="text" class="form-control" name="zip" placeholder="zip" value="{{editCustomer.Address.dataValues.zip}}">
-                        </div>
-                        <div class="form-group">
-                            <label for="">Photo</label>
-                            <input type="text" class="form-control" name="photo" placeholder="photo" value="{{editCustomer.photo}}">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="">Comment</label>
+                                <textarea class="form-control" name="comment" placeholder="comment" row="50" style="height:20em; width: 20em">{{editCustomer.comment}}</textarea>
+                            </div>
                         </div>
                     </div>
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="">Comment</label>
-                            <textarea class="form-control" name="comment" placeholder="comment" row="50" style="height:20em; width: 20em">{{editCustomer.comment}}</textarea>
-                        </div>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary">Edit Customer</button>
-            </div>{{!-- container --}}
-            <input type="hidden" value="{{editCustomer.Phone.id}}" name="phoneId" />
-            <input type="hidden" value="{{editCustomer.Email.id}}" name="emailId" />
-            <input type="hidden" value="{{editCustomer.Address.id}}" name="addressId" />
-        </form>
+                    <button type="submit" class="btn btn-primary">Edit Customer</button>
+                </div>{{!-- container --}}
+                <input type="hidden" value="{{editCustomer.Phone.id}}" name="phoneId" />
+                <input type="hidden" value="{{editCustomer.Email.id}}" name="emailId" />
+                <input type="hidden" value="{{editCustomer.Address.id}}" name="addressId" />
+            </form>
+        </div>
+        <!-- card-block -->
     </div>
-    <!-- card-block -->
+    <!-- second card -->
 </div>
-<!-- second card -->
-</div>
+<script>
+    $( function() {
+        $("#lastvisit").datepicker();
+    });
+
+    $(document).ready(function() {
+        $("#admin-ul").show();
+        $("#public-ul").hide();
+    });
+</script>

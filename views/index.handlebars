@@ -26,9 +26,12 @@
     ];
 
     $(document).ready(function () {
-        setInterval(changeService, 3000);
+        setInterval(changeService, 1500);
 
         $("#iHome").addClass("active");
+
+        $("#admin-ul").hide();
+        $("#public-ul").show();
     });
 
     function changeService() {
