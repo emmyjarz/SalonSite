@@ -13,30 +13,30 @@
   	</div>
   	<div class="row">
     	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 contact-box">
-    		<form action="" method="post">
+    		<form action="/leads" method="POST">
     			<div class="form-group">
 					<div class="row">
 						<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 firstNameCont">
 							<label for="firstNameContact" class="label-short">First Name:</label>
-							<input type="text" class="input-short" id="firstNameContact">
+							<input type="text" class="input-short" id="firstNameContact" name="firstNameContact">
 						</div>
 						<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 lastNameCont">
 							<label for="lastNameContact" class="label-short">Last Name:</label>
-							<input type="text" class="input-short" id="lastNameContact">
+							<input type="text" class="input-short" id="lastNameContact" name="lastNameContact">
 						</div>
 					</div>
     			</div>
     			<div class="form-group">
     				<label for="phoneContact" class="label-short">Phone:</label>
-    				<input type="tel" class="form-control" id="phoneContact">
+    				<input type="tel" class="form-control" id="phoneContact" name="phoneContact">
   				</div>
   				<div class="form-group">
   					<label for="emailContact" class="label-short">Email address:</label>
-    				<input type="email" class="form-control" id="emailContact">
+    				<input type="email" class="form-control" id="emailContact" name="emailContact">
   				</div>
   				<div class="form-group">
   					<label for="reasonContact" class="label-short">Choose one:</label>
-  					<select id="reasonContact" class="form-control">
+  					<select id="reasonContact" name="reasonContact" class="form-control">
 						<option value="General Inquiry">Make me beautiful!</option>
 						<option value="Special Occasion Consultation">Can I get a special occasion consultation?</option>
 						<option value="Questions">I just have some questions.</option>	
@@ -48,8 +48,8 @@
 				</form>	
 			</div>
 		</div>
-    	<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 map-div"><div id="pano"></div></div>
-    	<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 map-div"><div id="map"></div></div>
+    	<!--<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 map-div"><div id="pano"></div></div>-->
+    	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 map-div"><div id="map"></div></div>
 	</div>
 	<script>
 		function initMap() {
@@ -62,15 +62,16 @@
 				position: salon,
 				map: map
 			});
-			var panorama = new google.maps.StreetViewPanorama(
+			/*var panorama = new google.maps.StreetViewPanorama(
 				document.getElementById('pano'), {
 				position: salon,
 				pov: {
 					heading: 15,
 					pitch: 10
 				}
-				});
-			map.setStreetView(panorama);
+			});
+
+			map.setStreetView(panorama);*/
 		}
 	
 		$(document).ready(function() {

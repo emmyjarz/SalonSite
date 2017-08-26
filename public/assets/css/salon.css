@@ -176,3 +176,11 @@ footer {
 ul .admin-ul {
     display: none;
 }
+
+#submitContact {
+    cursor: pointer;
+}
+
+.card {
+    margin-bottom: 45px;
+}

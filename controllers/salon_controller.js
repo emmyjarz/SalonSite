@@ -1,11 +1,10 @@
 var express = require("express");
 var router = express.Router();
 var db = require("../models");
-
-//var Twilio = require('twilio');
-//var Tconfig = require('../config/js/config.js');
-////console.log(Tconfig);
-//var client = new Twilio(Tconfig.accountSid, Tconfig.authToken);
+/* Twilio Setup */
+var Twilio = require('twilio');
+var Tconfig = require('../config/js/config.js');
+var client = new Twilio(Tconfig.accountSid, Tconfig.authToken);
 const SALON_NAME = "Blvd6 Salon";
 
 //display
@@ -49,20 +48,20 @@ router.post("/leads", (req, res) => {
   Reason for contact: ${req.body.reasonContact}
   Additional comments: ${req.body.addlContact}`;
 
-  // client.messages.create({
-  //     to: Tconfig.salonNumber,  // Text this number
-  //     from: Tconfig.twilioNumber, // From a valid Twilio number
-  //     body: textString
-  // })
-  // .then(() => {
-  //     // Otherwise, respond with 200 OK
-  //     //res.status(200).send('Lead notification was successfully sent.');
-  //     res.redirect("/contactus");
-  // })
-  // .catch((err) => {
-  //   console.error(err);
-  //   res.status(500).send();
-  // });
+  client.messages.create({
+      to: Tconfig.salonNumber,  // Text this number
+      from: Tconfig.twilioNumber, // From a valid Twilio number
+      body: textString
+  })
+  .then(() => {
+      // Otherwise, respond with 200 OK
+      //res.status(200).send('Lead notification was successfully sent.');
+      res.redirect("/contactus");
+  })
+  .catch((err) => {
+    console.error(err);
+    res.status(500).send();
+  });
 });
 
 //show product brand on the product page
